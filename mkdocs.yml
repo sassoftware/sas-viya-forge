@@ -1,0 +1,3 @@
+site_name: MkDocs to Azure Static Web App
+theme:
+  name: material

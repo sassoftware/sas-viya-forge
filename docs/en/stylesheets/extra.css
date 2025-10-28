@@ -1,0 +1,111 @@
+@font-face {
+  font-family: "Anova"; 
+  font-weight: normal; 
+  font-style: normal;
+  src: url("../assets/fonts/Anova-Regular.otf");
+}
+
+@font-face {
+  font-family: "Anova"; 
+  font-weight: bold; 
+  font-style: normal;
+  src: url("../assets/fonts/Anova-Bold.otf");
+}
+
+@font-face {
+  font-family: "Anova"; 
+  font-weight: normal; 
+  font-style: italic;
+  src: url("../assets/fonts/Anova-Italic.otf");
+}
+
+@font-face {
+  font-family: "Anova"; 
+  font-weight: bold; 
+  font-style: italic;
+  src: url("../assets/fonts/Anova-BoldItalic.otf");
+}
+
+@font-face {
+  font-family: "Anova"; 
+  font-weight: light; 
+  font-style: normal;
+  src: url("../assets/fonts/Anova-Light.otf");
+}
+
+@font-face {
+  font-family: "Anova"; 
+  font-weight: light; 
+  font-style: italic;
+  src: url("../assets/fonts/Anova-LightItalic.otf");
+}
+
+
+:root  > * {
+    --md-primary-fg-color:        #0766D1;
+    --md-primary-fg-color--light: #C4DEFD;
+    --md-primary-fg-color--dark:  #0766D1;
+    --md-text-font: "Anova";
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .card {
+    flex: 1 1 calc(33.333% - 1rem);
+    background-color: #0766D1; /* Blue color */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+  
+  .md-button--primary {
+    color: white;
+    text-decoration: none;
+  }
+
+  #search-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  #search-results {
+    flex: 2;
+    margin-top: 20px;
+  }
+  
+  #tag-filter {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  #tag-filter label {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  #tag-filter select {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 10px;
+  }
+  
+  #search-results .result-tile {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  #search-results .result-tile:hover {
+    background-color: #f0f0f0;
+  }

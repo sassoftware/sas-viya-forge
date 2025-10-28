@@ -1,0 +1,42 @@
+# Search
+
+All artifacts in the Viya Forge repository contain at least three tags that organize them by the type of Guide, the Pillar and the Topic.
+By using the selection options below you can find all artifacts that match the selected tags.
+
+You can also use the global search functionality by pressing the forward-slash button on your keyboard or clicking in the search bar at the top of the screen.
+The global search functionality searches through the entire site for any occurence of the provided string.
+
+<div id="search-container" class="md-typeset">
+    <div id="tag-filter" class="md-typeset">
+        <label for="type-tags">Type:</label>
+        <select id="type-tags" class="md-input" onchange="filterPages()"></select>
+    </div>
+    <div id="tag-filter" class="md-typeset">
+        <label for="guide-tags">Guide:</label>
+        <select id="guide-tags" class="md-input" onchange="filterPages()"></select>
+    </div>
+    <div id="tag-filter" class="md-typeset">
+        <label for="pillar-tags">Pillar:</label>
+        <select id="pillar-tags" class="md-input" onchange="filterPages()"></select>
+    </div>
+    <div id="tag-filter" class="md-typeset">
+        <label for="topic-tags">Topic:</label>
+        <select id="topic-tags" class="md-input" onchange="filterPages()"></select>
+    </div>
+    <div id="tag-filter" class="md-typeset">
+        <label for="provider-tags">Provider:</label>
+        <select id="provider-tags" class="md-input" onchange="filterPages()"></select>
+    </div>
+    <div id="tag-filter" class="md-typeset">
+        <label for="version">Version:</label>
+        <select id="version" class="md-input" onchange="filterPages()"></select>
+    </div>
+</div>
+
+## Results
+
+<div id="search-results">
+    <!-- Filtered results will be displayed here -->
+</div>
+
+<script src="../js/filter.js"></script>

@@ -1,0 +1,41 @@
+name: Deploy MkDocs site to Azure Static Web Apps
+
+env:
+  APP_LOCATION: "site"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      
+permissions:
+  contents: read
+  
+jobs:
+  build_and_deploy:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.13      
+          cache: 'pip' # caching pip dependencies
+      - run: pip install mkdocs-material 
+      - run: pip install --user -r requirements.txt
+      - run: mkdir -p config/en
+      - run: cp template/mkdocs.template config/en/mkdocs.yml
+      - run: sed -i -e 's/LANG/en/g' config/en/mkdocs.yml
+      - run: bash template/generate-nav-tree.sh docs/en config/en/mkdocs.yml
+      - run: mkdocs build -f config/en/mkdocs.yml
+      - run: cp docs/index.html site/
+      - run: cp webapp_config/staticwebapp.config.json site/
+      - name: Build And Deploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: ${{ env.APP_LOCATION }}
+          skip_app_build: true
+          skip_api_build: true

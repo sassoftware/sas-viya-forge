@@ -1,0 +1,59 @@
+site_name: SAS Viya Forge
+repo_url: https://github.com/sassoftware/sas-viya-forge
+site_url: https://viyaforge.sas.com/
+docs_dir: '../../docs/LANG' 
+site_dir: '../../site/LANG' 
+
+theme: 
+  name: material
+  language: LANG
+  custom_dir: ../../docs/overrides
+  logo: assets/img/sas-logo-white.png
+  favicon: assets/img/favicon.ico
+  font: false
+  features:
+    - navigation.tabs
+    - content.code.copy
+
+plugins:
+  - search
+  - macros
+  - tags
+  - print-site
+
+extra:
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css
+  - stylesheets/extra.css
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js
+  
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - footnotes
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - md_in_html
+
