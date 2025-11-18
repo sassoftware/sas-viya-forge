@@ -1,0 +1,13 @@
+workflow:
+  rules:
+    - if: $CI_PROJECT_PATH != "aat/viya-forge-dev"
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH
+
+dummy-job:
+  stage: test
+  script:
+    - echo "No validation needed for this branch. Validation takes place on Github."
