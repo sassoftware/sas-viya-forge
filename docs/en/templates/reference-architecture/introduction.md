@@ -1,0 +1,2 @@
+<!-- Provide a short introduction into this reference architecture. See the example below -->
+This reference architecture provides an overview of how a Viya environment can be deployed to an Azure AKS cluster with multiple Availability Zones to minimize downtime in case an Availability Zone goes down.

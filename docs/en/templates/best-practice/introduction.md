@@ -1,0 +1,2 @@
+<!-- Provide a short introduction into this Best Practice. See the example below -->
+When deploying SAS Viya behind an HTTP gateway such as Citrix NetScaler, Ergon Airlock, Azure Front Door, or any other "Gateway or proxy", it's crucial to understand how compression is handled. Compression affects not only performance but also security and the configuration of your gateway can unintentionally introduce trade-offs. This Best Practice documents how to deal with compression on these gateways.
