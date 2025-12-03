@@ -3,6 +3,8 @@
 All artifacts in the Viya Forge repository contain at least three tags that organize them by the type of Guide, the Pillar and the Topic.
 By using the selection options below you can find all artifacts that match the selected tags.
 
+Select at least your Viya version and one of the other tags to see the results.
+
 You can also use the global search functionality by pressing the forward-slash button on your keyboard or clicking in the search bar at the top of the screen.
 The global search functionality searches through the entire site for any occurence of the provided string.
 
