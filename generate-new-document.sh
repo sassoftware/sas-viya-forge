@@ -15,8 +15,8 @@ usage() {
     echo "                      Valid values are 0, 1, 2"
     echo "  -p, --platform      Specify the platform (optional)"
     echo "                      Valid values are AWS, Azure, GCP, OpenShift"
-    echo "  -b, --valid-from    Specify the valid from version (mandatory)"
-    echo "  -e, --valid-to      Specify the valid to version (optional)"
+    echo "  -b, --valid-from    Specify the valid from SAS Viya version (mandatory)"
+    echo "  -e, --valid-to      Specify the valid to SAS Viya version (optional)"
     echo "  -s, --subject       Specify the subject (optional)."
     echo "                      Valid values are Security, Reliability, Cost, Performance & Scale, Efficiency"
     echo "  -x, --external      Specify if the document links to external content (optional)"
@@ -281,8 +281,8 @@ then
     echo "3. Commit and push your changes to your branch."
     echo "4. Open a merge request to have your changes reviewed and merged."
     echo ""
-    echp "For more details, see the Contributing page in the documentation."
-    exit 0
+    echo "For more details, see the Contributing page in the documentation."
+	exit 0
 else
     echo "Finished creating new document structure."
     echo "Document Directory: $TARGET_DIR"
@@ -298,5 +298,5 @@ else
     echo "4. Open a merge request to have your changes reviewed and merged."
     echo ""
     echo "For more details, see the Contributing page in the documentation."
-    exit 0
+	exit 0
 fi
