@@ -157,7 +157,7 @@ DATE=$(date +%Y%m%d)
 # Determine the template and target directory based on document type
 if [ "$DOCUMENT_TYPE" == "guide" ];
 then
-    TEMPLATE_DIR="docs/en/templates/$DOCUMENT_TYPE/$GUIDE_TYPE"
+    TEMPLATE_DIR="docs/en/templates/$DOCUMENT_TYPE/$GUIDE_TYPE-guides"
     TARGET_DIR="docs/en/guides/${GUIDE_TYPE}-guides/$DOCUMENT_NAME/$DATE"
 elif [ "$DOCUMENT_TYPE" == "best-practice" ];
 then
