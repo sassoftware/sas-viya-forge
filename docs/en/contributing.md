@@ -81,7 +81,7 @@ Options:
   -t, --type          Specify the document type (mandatory).
                       Valid values are best-practice, guide, reference-architecture, pathway
   -g, --guide-type    Specify the guide type (mandatory if document type is 'guide').
-                      Valid values are implementation, deployment, operating
+                      Valid values are decision, implementation, deployment, operating
   -d, --day           Specify the day in the lifecycle (mandatory if document type is 'best-practice').
                       Valid values are 0, 1, 2
   -p, --platform      Specify the platform (optional)
@@ -137,6 +137,7 @@ If you use the generate-new-document script provided, you will automatically use
 Guides are typically longer than a Best Practice and encompass an entire or multiple scenarios.
 Guides are organized by type. The following guide types are open to submissions:
 
+* Decision Guides (Day 0)
 * Deployment Guides (Day 0)
 * Implementation Guides (Day 1)
 * Operating Guides (Day 2)
@@ -147,10 +148,12 @@ Guides need to adhere to the following layout:
 
 * Introduction
 * Use Case Description
+    * Decision Guides - For what non-functional requirement am I making a decision?
     * Deployment Guides - What non-functional requirement am I trying to meet?
     * Implementation Guides - What functional requirement am I implementing?
     * Operating Guides - What operation do I need to perform?
 * Solution Overview
+    * Decision Guides - What are the viable choices and how do I make a decision amongst them?
     * Deployment Guides - How do I deploy my System to meet the requirement?
     * Implementation Guides - What Task Sequence(s) will lead to meeting the requirement?
     * Operating Guides - How do I perform the required operation?

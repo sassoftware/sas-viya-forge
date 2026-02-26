@@ -10,7 +10,7 @@ usage() {
     echo "  -t, --type          Specify the document type (mandatory)."
     echo "                      Valid values are best-practice, guide, reference-architecture, pathway"
     echo "  -g, --guide-type    Specify the guide type (mandatory if document type is 'guide')."
-    echo "                      Valid values are implementation, deployment, operating"
+    echo "                      Valid values are decision, implementation, deployment, operating"
     echo "  -d, --day           Specify the day in the lifecycle (mandatory if document type is 'best-practice')."
     echo "                      Valid values are 0, 1, 2"
     echo "  -p, --platform      Specify the platform (optional)"
@@ -108,7 +108,7 @@ then
         usage
     else
         # Validate guide type
-        if [ "$GUIDE_TYPE" != "implementation" ] && [ "$GUIDE_TYPE" != "deployment" ] && [ "$GUIDE_TYPE" != "operating" ]; 
+        if [ "$GUIDE_TYPE" != "decision" ] && [ "$GUIDE_TYPE" != "implementation" ] && [ "$GUIDE_TYPE" != "deployment" ] && [ "$GUIDE_TYPE" != "operating" ]; 
         then
             echo "Invalid guide type: $GUIDE_TYPE"
             usage

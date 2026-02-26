@@ -1,6 +1,6 @@
 ---
 tags:
-  - Guide - Deployment
+  - Guide - Decision
   - Valid From - {{VALID_FROM}}
 ---
 
@@ -14,6 +14,6 @@ tags:
 {% include '{{ SOLUTION_LINK }}' %}
 
 ## Additional Resource
-<!--- If there are any additional resources that are relevant to this Deployment Guide include them below: -->
+<!--- If there are any additional resources that are relevant to this Decision Guide include them below: -->
 
 - [NAME](LINK)

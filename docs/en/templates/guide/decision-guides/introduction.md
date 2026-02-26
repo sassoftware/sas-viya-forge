@@ -1,0 +1,2 @@
+<!-- Provide a short introduction into this decision guide. See the example below -->
+This decision guide provides guidance on choosing the right shared storage solution for SAS Viya deployments in Microsoft Azure. The guide is designed to offer recommendations based on performance, cost and scalability, with simple decision points to help customers choose the best fit. The solutions covered in this decision guide are, Azure Files, Azure Container Storage, Azure NetApp Files and Azure Managed Lustre.
