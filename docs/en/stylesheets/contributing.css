@@ -1,0 +1,11 @@
+code {
+    border: 1px solid var(--color-container-border-4);
+}
+
+.md-clipboard {
+    color: var(--md-code-fg-color)
+}
+
+.md-clipboard:hover, .md-clipboard:hover {
+    color: var(--color-action-link-normal)
+}

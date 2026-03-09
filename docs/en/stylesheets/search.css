@@ -1,0 +1,92 @@
+
+#search-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-base-xl);
+    padding: var(--space-base-xl);
+
+    background-color: var(--color-container-background-0);
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-container-border-4);
+    border-radius: var(--size-border-radius-s);
+}
+
+#search-container h2 {
+    margin: 0px; 
+}
+
+#search-option-row {
+    display: flex;
+    flex-direction: row;
+
+    gap: 32px;
+    padding: var(--space-base-null);
+}
+
+#tag-filter {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    gap: var(--space-base-xs);
+}
+
+#tag-filter label {
+    display: flex;
+    margin-top: 10px;
+
+    color: var(--color-label-text);
+    font-family: var(--font-family-primary);
+    font-size: 12.44px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+#tag-filter select {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: var(--color-action-background-control-normal);
+
+    border: 0px;
+    border-bottom-color: var(--color-action-border-bottom-control-normal);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+#search-results {
+    flex: 2;
+    margin-top: 20px;
+
+    gap: var(--space-base-xl);
+    padding: var(--space-base-xl);
+
+    background-color: var(--color-container-background-0);
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-container-border-4);
+    border-radius: var(--size-border-radius-s);
+}
+
+#search-results h2 {
+    margin: 0px; 
+}
+
+#search-results .result-tile {
+    display: block;
+    padding-top: var(--space-base-s);
+    padding-bottom: var(--space-base-s);
+    border-bottom: 1px solid var(--color-container-border-4);
+    color: var(--color-action-link-normal);
+    text-decoration: underline;
+}
+
+#search-results .result-tile:hover {
+    background-color: var(--color-action-background-subtle-selected);
+}

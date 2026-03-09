@@ -219,7 +219,7 @@ To ensure it is clear to the reader what the validity of a certain document is, 
 The sections folder that was created for you contains an img folder where you can store images. The scenario.md file contains an example of how to include an image.
 The syntax for including images in Markdown is the following:
 
-![<Image Description>](<Image Source>)
+!\[<Image Description\>\](<Image Source\>)
 
 The image source URL has been generated for you. You only need to update the image description and filename.
 Images can be placed in other files within the same sections folder as well, using the same syntax.
