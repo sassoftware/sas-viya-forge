@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Script to generate a new document from template files
 
 # Function to display usage information
@@ -22,6 +22,34 @@ usage() {
     echo "  -x, --external      Specify if the document links to external content (optional)"
     echo "  -h, --help          Display this help message"
     exit 1
+}
+
+# Function to run sed with portable in-place editing flags
+sed_inplace() {
+    local sed_cmd="sed"
+
+    if [[ "$OSTYPE" == "darwin"* ]] && command -v gsed >/dev/null 2>&1; then
+        sed_cmd="gsed"
+    fi
+
+    if [[ "$sed_cmd" == "gsed" ]]; then
+        "$sed_cmd" -i "$@"
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        "$sed_cmd" -i '' "$@"
+    else
+        "$sed_cmd" -i "$@"
+    fi
+}
+
+# Append a line after the first matching pattern using syntax accepted by BSD and GNU sed
+append_after() {
+    local pattern="$1"
+    local text="$2"
+    local file="$3"
+
+    sed_inplace -e "/$pattern/a\\
+$text
+" "$file"
 }
 
 # Parse command line arguments
@@ -221,37 +249,37 @@ fi
 
 # Replace placeholders in the copied files
 if [ ! -z "$PLATFORM" ]; then
-    sed -i "/Valid From/a\  - Infrastructure Provider - $PLATFORM" "$TARGET_DIR/index.md"
+    append_after "Valid From" "  - Infrastructure Provider - $PLATFORM" "$TARGET_DIR/index.md"
 fi
 
 if [ ! -z "$SUBJECT" ]; then
-    sed -i "/Valid From/a\  - Pillar - $SUBJECT" "$TARGET_DIR/index.md"
+    append_after "Valid From" "  - Pillar - $SUBJECT" "$TARGET_DIR/index.md"
 fi
 
 if [ "$EXTERNAL_CONTENT" = true ]; then
-    sed -i "/Valid From/a\  - External Content" "$TARGET_DIR/index.md"
+    append_after "Valid From" "  - External Content" "$TARGET_DIR/index.md"
 fi
 
 if [ ! -z "$VALID_TO" ]; then
-    sed -i "/Valid From/a\  - Valid To - $VALID_TO" "$TARGET_DIR/index.md"
+    append_after "Valid From" "  - Valid To - $VALID_TO" "$TARGET_DIR/index.md"
 fi
 
-sed -i "s/{{VALID_FROM}}/$VALID_FROM/g" "$TARGET_DIR/index.md"
+sed_inplace "s/{{VALID_FROM}}/$VALID_FROM/g" "$TARGET_DIR/index.md"
 
 # Replace links in index.md
 if [ "$DOCUMENT_TYPE" != "pathway" ] && [ "$EXTERNAL_CONTENT" = false ];
 then
     INTRODUCTION_LINK="${TARGET_DIR#docs/en/}/introduction.md"
     ESCAPED_INTRODUCTION_LINK=$(printf '%s\n' "$INTRODUCTION_LINK" | sed 's/[\/&]/\\&/g')
-    sed -i "s/{{ INTRODUCTION_LINK }}/$ESCAPED_INTRODUCTION_LINK/g" "$TARGET_DIR/index.md"
+    sed_inplace "s/{{ INTRODUCTION_LINK }}/$ESCAPED_INTRODUCTION_LINK/g" "$TARGET_DIR/index.md"
 
     SCENARIO_LINK="${SECTIONS_DIR#docs/en/}/scenario.md"
     ESCAPED_SCENARIO_LINK=$(printf '%s\n' "$SCENARIO_LINK" | sed 's/[\/&]/\\&/g')
-    sed -i "s/{{ SCENARIO_LINK }}/$ESCAPED_SCENARIO_LINK/g" "$TARGET_DIR/index.md"
+    sed_inplace "s/{{ SCENARIO_LINK }}/$ESCAPED_SCENARIO_LINK/g" "$TARGET_DIR/index.md"
 
     SOLUTION_LINK="${SECTIONS_DIR#docs/en/}/solution.md"
     ESCAPED_SOLUTION_LINK=$(printf '%s\n' "$SOLUTION_LINK" | sed 's/[\/&]/\\&/g')
-    sed -i "s/{{ SOLUTION_LINK }}/$ESCAPED_SOLUTION_LINK/g" "$TARGET_DIR/index.md"
+    sed_inplace "s/{{ SOLUTION_LINK }}/$ESCAPED_SOLUTION_LINK/g" "$TARGET_DIR/index.md"
 
     IMAGE_LINK="${SECTIONS_DIR}/img/ExampleImage.png"
 
@@ -265,7 +293,7 @@ then
     fi
 
     ESCAPED_IMAGE_LINK=$(printf '%s\n' "$ImageRelativeLink" | sed 's/[\/&]/\\&/g')
-    sed -i "s/{{ IMAGE_LINK }}/$ESCAPED_IMAGE_LINK/g" "$SECTIONS_DIR/scenario.md"
+    sed_inplace "s/{{ IMAGE_LINK }}/$ESCAPED_IMAGE_LINK/g" "$SECTIONS_DIR/scenario.md"
 fi
 
 # Print success message
