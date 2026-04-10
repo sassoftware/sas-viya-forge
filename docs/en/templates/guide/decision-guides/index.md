@@ -1,4 +1,5 @@
 ---
+title: <YOUR TITLE HERE>
 tags:
   - Guide - Decision
   - Valid From - {{VALID_FROM}}

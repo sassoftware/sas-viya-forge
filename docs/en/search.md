@@ -1,3 +1,7 @@
+---
+title: Search
+---
+
 # Search
 
 All artifacts in the Viya Forge repository contain at least three tags that organize them by the type of Guide, the Pillar and the Topic.

@@ -1,3 +1,7 @@
+---
+title: Glossary
+---
+
 # Glossary
 
 The following terms are used throughout SAS Viya Forge and in its Assets.
