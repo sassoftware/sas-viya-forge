@@ -27,6 +27,7 @@ python3 -m pip install --upgrade pip
 pip install -r requirements.txt
 
 # Copy the MkDocs template and generate the navigation tree
+mkdir -p config/en
 cp template/mkdocs.template config/en/mkdocs.yml
 sed -i -e 's/LANG/en/g' config/en/mkdocs.yml
 bash template/generate-nav-tree.sh docs/en config/en/mkdocs.yml
