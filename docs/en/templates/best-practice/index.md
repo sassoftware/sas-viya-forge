@@ -1,4 +1,5 @@
 ---
+title: <YOUR TITLE HERE>
 tags:
   - Best Practice
   - Valid From - {{VALID_FROM}}

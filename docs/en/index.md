@@ -1,4 +1,4 @@
 ---
-title: SAS Viya Forge
+title: Home
 template: home_en.html
 ---

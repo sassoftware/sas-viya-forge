@@ -37,12 +37,12 @@ document.addEventListener("DOMContentLoaded", function() {
       versions = generateVersions(minimumYear, minimumMonth, new Date().getFullYear(), new Date().getMonth() + 1);
       const versionTags = new Set(versions);
 
-      populateDropdown("type-tags", typeTags);
-      populateDropdown("guide-tags", guideTags);
-      populateDropdown("pillar-tags", pillarTags);
-      populateDropdown("topic-tags", topicTags);
-      populateDropdown("provider-tags", providerTags);
-      populateDropdown("version", versionTags);
+      populateDropdown("type", "type-tags", typeTags);
+      populateDropdown("guide", "guide-tags", guideTags);
+      populateDropdown("pillar", "pillar-tags", pillarTags);
+      populateDropdown("topic", "topic-tags", topicTags);
+      populateDropdown("provider", "provider-tags", providerTags);
+      populateDropdown("version", "version", versionTags);
 
       // Initialize Select2
       $('#type-tags').select2();
@@ -70,13 +70,13 @@ function generateVersions(startYear, startMonth, endYear, endMonth) {
   return versions;
 }
 
-function populateDropdown(dropdownId, tags) {
+function populateDropdown(selector, dropdownId, tags) {
   const select = document.getElementById(dropdownId);
   
   const option = document.createElement("option");
   option.selected = true;
   option.value = "None"
-  option.text = " -- select an option -- ";
+  option.text = "Select " + selector;
   select.appendChild(option)
 
   tags.forEach(tag => {
@@ -109,6 +109,7 @@ function filterPages() {
 
   const resultsDiv = document.getElementById("search-results");
   resultsDiv.innerHTML = ""; // Clear previous results
+  resultsDiv.appendChild(document.createElement("h2")).textContent = "Search Results";
 
   // Get all pages that meet the selected tags
   var taggedPages = [];

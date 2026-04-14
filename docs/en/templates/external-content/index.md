@@ -1,4 +1,5 @@
 ---
+title: <YOUR TITLE HERE>
 tags:
   - Pathway
   - Valid From - {{VALID_FROM}}

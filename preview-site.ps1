@@ -36,6 +36,9 @@ python -m pip install --upgrade pip
 Write-Host "Installing dependencies..."
 pip install -r requirements.txt
 
+# Create the directory structure for MkDocs
+New-Item -ItemType Directory -Force -Path "config\en"
+
 # Copy the MkDocs template and generate the navigation tree
 Write-Host "Setting up MkDocs configuration..."
 Copy-Item -Path "template/mkdocs.template" -Destination "config/en/mkdocs.yml" -Force

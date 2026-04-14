@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "Anova"; 
+  font-weight: normal; 
+  font-style: normal;
+  src: url("../assets/fonts/Anova-Regular.otf");
+}
+
+@font-face {
+  font-family: "Anova"; 
+  font-weight: bold; 
+  font-style: normal;
+  src: url("../assets/fonts/Anova-Bold.otf");
+}
+
+@font-face {
+  font-family: "Anova"; 
+  font-weight: normal; 
+  font-style: italic;
+  src: url("../assets/fonts/Anova-Italic.otf");
+}
+
+@font-face {
+  font-family: "Anova"; 
+  font-weight: bold; 
+  font-style: italic;
+  src: url("../assets/fonts/Anova-BoldItalic.otf");
+}
+
+@font-face {
+  font-family: "Anova"; 
+  font-weight: light; 
+  font-style: normal;
+  src: url("../assets/fonts/Anova-Light.otf");
+}
+
+@font-face {
+  font-family: "Anova"; 
+  font-weight: light; 
+  font-style: italic;
+  src: url("../assets/fonts/Anova-LightItalic.otf");
+}
+
+@font-face {
+  font-family: "Anova UI"; 
+  font-weight: normal; 
+  font-style: normal;
+  src: url("../assets/fonts/AnovaUI-Regular.otf");
+}
+
+@font-face {
+  font-family: "Anova UI"; 
+  font-weight: bold; 
+  font-style: normal;
+  src: url("../assets/fonts/AnovaUI-Bold.otf");
+}
+
+@font-face {
+  font-family: "Anova UI"; 
+  font-weight: normal; 
+  font-style: italic;
+  src: url("../assets/fonts/AnovaUI-Italic.otf");
+}
+
+@font-face {
+  font-family: "Anova UI"; 
+  font-weight: bold; 
+  font-style: italic;
+  src: url("../assets/fonts/AnovaUI-BoldItalic.otf");
+}
+
+@font-face {
+  font-family: "Anova UI"; 
+  font-weight: light; 
+  font-style: normal;
+  src: url("../assets/fonts/AnovaUI-Light.otf");
+}
+
+@font-face {
+  font-family: "Anova UI"; 
+  font-weight: light; 
+  font-style: italic;
+  src: url("../assets/fonts/AnovaUI-LightItalic.otf");
+}

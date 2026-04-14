@@ -22,7 +22,7 @@ function Show-Usage {
     Write-Host "  -Type                Specify the document type (mandatory)."
     Write-Host "                       Valid values are best-practice, guide, reference-architecture, pathway"
     Write-Host "  -GuideType           Specify the guide type (mandatory if document type is 'guide')."
-    Write-Host "                       Valid values are implementation, deployment, operating"
+    Write-Host "                       Valid values are decision, implementation, deployment, operating"
     Write-Host "  -Day                 Specify the day in the lifecycle (mandatory if document type is 'best-practice')."
     Write-Host "                       Valid values are 0, 1, 2"
     Write-Host "  -Platform            Specify the platform (optional)"
@@ -66,7 +66,7 @@ if ($Type -eq "guide") {
         Show-Usage
     }
     
-    $validGuideTypes = @("implementation", "deployment", "operating")
+    $validGuideTypes = @("decision", "implementation", "deployment", "operating")
     if ($validGuideTypes -notcontains $GuideType) {
         Write-Host "Invalid guide type: $GuideType"
         Show-Usage

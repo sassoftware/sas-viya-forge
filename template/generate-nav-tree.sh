@@ -111,7 +111,7 @@ generate_nav_tree() {
 main() {
     local root_dir="$1"
     local output_file="$2"
-    local top_level_dirs=("reference-architectures" "best-practices" "guides" "pathways")
+    local top_level_dirs=("reference-architectures" "best-practices" "guides" "pathways" "tools")
 
     if [ -z "$root_dir" ] || [ -z "$output_file" ]; then
         echo "Usage: $0 <root_directory> <output_file>"

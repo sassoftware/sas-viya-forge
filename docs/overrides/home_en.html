@@ -3,284 +3,92 @@
 {% extends "main.html" %}
 {% block tabs %}
 {{ super() }}
+
 <style>
-
     .md-main {
-        flex-grow: 0
-    }
-
-    .md-main__inner {
-        display: flex;
-        height: 100%;
-    }
-
-    .tx-container {
-        padding-top: .0rem;
-        background: linear-gradient(to bottom, var(--md-primary-fg-color), #FFFFFF 99%,#fff 99%)
-    }
-
-    .tx-hero {
-        margin: 32px 2.8rem;
-        color: var(--md-primary-bg-color);
-        justify-content: center;
-    }
-
-    .tx-hero h1 {
-        margin-bottom: 1rem;
-        color: currentColor;
-        font-weight: 700
-    }
-
-    .tx-hero__content {
-        padding-bottom: 1rem;
-        margin: 0 auto;
-    }
-
-    .tx-hero__image{
-        width:17rem;
-        height:17rem;
-        order:1;
-        padding-right: 2.5rem;
-    }
-
-    .tx-hero .md-button {
-        margin-top: .5rem;
-        margin-right: .5rem;
-        color: var(--md-primary-bg-color)
-    }
-
-    .tx-hero .md-button--primary {
-        background-color: var(--md-primary-bg-color);
-        color: hsla(280deg, 37%, 48%, 1);
-        border-color: var(--md-primary-bg-color)
-    }
-
-    .tx-hero .md-button:focus,
-    .tx-hero .md-button:hover {
-        background-color: var(--md-accent-fg-color);
-        color: var(--md-default-bg-color);
-        border-color: var(--md-accent-fg-color)
-    }
-
-    .feature-item h2 svg {
-        height: 30px;
-        float: left;
-        margin-right: 10px;
-        transform: translateY(10%);
-    }
-
-    .top-hr {
-        margin-top: 42px;
-    }
-
-    .feature-item {
-        font-family: 'Lato', sans-serif;
-        font-weight: 300;
-        box-sizing: border-box;
-        padding: 0 15px;
-        word-break: break-word;
-        align-items: center;
-    }
-
-    .feature-item h2 {
-        color: #333;
-        font-weight: 300;
-        font-size: 25px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: normal;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-family: inherit;
-    }
-
-    .feature-item p {
-        font-size: 16px;
-        line-height: 1.8em;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        color: #111;
-        margin: 0 0 10px;
-        display: block;
-        text-align: justify; 
-    }
-
-    @media screen and (max-width:30em) {
-        .tx-hero h1 {
-            font-size: 1.4rem
-        }
-    }
-
-    @media screen and (min-width:60em) {
-        .md-sidebar--secondary {
-            display: none
-        }
-
-        .tx-hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tx-hero__content {
-            max-width: 22rem;
-            margin-top: 3.5rem;
-            margin-bottom: 3.5rem;
-            margin-left: 1.0rem;
-            margin-right: 4.0rem;
-            align-items: center;
-        }
-    }
-
-    @media screen and (min-width:76.25em) {
-        .md-sidebar--primary {
-            display: none
-        }
-
-        .top-hr {
-            width: 100%;
-            display: flex;
-            max-width: 61rem;
-            margin-right: auto;
-            margin-left: auto;
-            padding: 0 .2rem;
-        }
-
-        .bottom-hr {
-            margin-top: 10px;
-            width: 100%;
-            display: flex;
-            max-width: 61rem;
-            margin-right: auto;
-            margin-left: auto;
-            padding: 0 .2rem;
-        }
-
-        .feature-item {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .feature-item:hover {
-            background-color: #526cfe47;
-            border-radius: 3px;
-        }
-    }
-
-    .hr {
-        border-bottom: 1px solid #eee;
-        width: 100%;
-        margin: 20px 0;
-    }
-
-    .text-center {
-        text-align: center;
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-        margin-top: 15px;
-        font-family: 'Lato', sans-serif;
-        font-size: 23px;
-        font-weight: 300;
-        padding-bottom: 10px;
-    }
-
-    .logos {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-flow: row wrap;
-        margin: 0 auto;
-    }
-
-    .logos img {
-        flex: 1 1 auto;
-        padding: 25px;
-        max-height: 130px;
-        vertical-align: middle;
-    }
-
-    .hr-logos {
-        margin-top: 0;
-        margin-bottom: 30px;
-    }
-
-    .md-footer-meta__inner {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin-top: 1.0rem;
-    }
-
-    .md-footer-social {
-        padding-top: 20px;
+        display: none;
     }
 </style>
 
-<!-- Main site Entry button descriptions -->
-<section class="tx-container">
-    <div class="md-grid md-typeset">
-      <div class="tx-hero">
-        <div class="tx-hero__image">
-          <img src="assets/img/Value.png" draggable="false">
-        </div>
-        <div class="tx-hero__content">
-          <h1> SAS Viya Forge </h1>
-          <p>SAS Viya Forge enables broad collaboration in the creation of supporting materials for quickly and consistently achieving value through well architected, implemented and operated Viya environments.</p>
-          <a href="search/" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
-            Find Content
-          </a>
-          <a href="https://github.com/sassoftware" title="{{ lang.t('source.link.title') }}" class="md-button">
-            Go to GitHub
-          </a>
-        </div>
-      </div>
-    </div>
-</section>
+<div class="content">
 
-<!-- Main site box descriptions -->
-<div class="top-hr">
-    <div class="feature-item" onclick="location.href='./reference-architectures/0-intro/';" style="cursor: pointer;">
-        <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
-            <path d="m270-120-10-88 114-314q15 14 32.5 23.5T444-484L334-182l-64 62Zm420 0-64-62-110-302q20-5 37.5-14.5T586-522l114 314-10 88ZM480-520q-50 0-85-35t-35-85q0-39 22.5-69.5T440-752v-88h80v88q35 12 57.5 42.5T600-640q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Z"/>
-          </svg>
-            Reference Architectures
-        </h2>
-        <p>Reference Architectures document the most optimal architecture to support one or more non-functional requirements.</p>
+    <div class="hero">
+        <div class="hero-left">
+            <div class="hero-title" >
+                <h1>SAS Viya Forge</h1>
+            </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p>
+                        SAS Viya Forge is a community driven repository for documents and tools that help architect, implement and operate your Viya environments.
+                        <br/><br/>
+                        Each piece of content is aimed at ensuring your Viya environment delivers maximum value in the shortest possible time.
+                    </p>
+                </div>
+                <div class="hero-button">
+                    <a href="search/" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
+                        Find Content
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="assets/img/right.svg" alt="SAS Viya Forge" />
+        </div>
     </div>
-    <div class="feature-item" onclick="location.href='./best-practices/0-intro/';" style="cursor: pointer;">
-        <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
-            <path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/>
-          </svg>
-            Best Practices
-        </h2>
-        <p>Best Practices document the widely accepted <b>Task Sequence(s)</b> as the most effective way to achieve a desired outcome.</p>
-    </div>
-    <div class="feature-item" onclick="location.href='./guides/0-intro/';" style="cursor: pointer;">
-        <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" >
-            <path d="M440-80v-160H240L120-360l120-120h200v-80H160v-240h280v-80h80v80h200l120 120-120 120H520v80h280v240H520v160h-80ZM240-640h447l40-40-40-40H240v80Zm33 320h447v-80H273l-40 40 40 40Zm-33-320v-80 80Zm480 320v-80 80Z"/>
-          </svg>
-            Guides
-        </h2>
-        <p>Guides document a sequence of <b>Best Practices</b> that together achieve a desired outcome.</p>
-    </div>
-    <div class="feature-item" onclick="location.href='./pathways/0-intro/';" style="cursor: pointer;">
-        <h2>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
-            <path d="M760-120q-39 0-70-22.5T647-200H440q-66 0-113-47t-47-113q0-66 47-113t113-47h80q33 0 56.5-23.5T600-600q0-33-23.5-56.5T520-680H313q-13 35-43.5 57.5T200-600q-50 0-85-35t-35-85q0-50 35-85t85-35q39 0 69.5 22.5T313-760h207q66 0 113 47t47 113q0 66-47 113t-113 47h-80q-33 0-56.5 23.5T360-360q0 33 23.5 56.5T440-280h207q13-35 43.5-57.5T760-360q50 0 85 35t35 85q0 50-35 85t-85 35ZM200-680q17 0 28.5-11.5T240-720q0-17-11.5-28.5T200-760q-17 0-28.5 11.5T160-720q0 17 11.5 28.5T200-680Z"/>
-        </svg>
-            Pathways
-        </h2>
-        <p>Pathways provide a combination of <b>Reference Architectures</b>, <b>Best Practices</b> and <b>Guides</b> to progress through a <b>System Lifecycle</b></p>
-    </div>
+
+
+    <section class="get-started">
+        <h1> Get Started </h1>
+        <div class="get-started-flow">
+            <div class="get-started-card" onclick="location.href='./reference-architectures/0-intro/';" style="cursor: pointer;">
+                <div class="get-started-content">
+                    <div class="get-started-title">
+                        <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 14V12H5V8H2.5C2.224 8 2 7.776 2 7.5C2 7.224 2.224 7 2.5 7H6V11H8V9L12 11.5L8 14ZM1 9V5V1H7.586L10 3.414V8H11V3.414C11 3.149 10.895 2.894 10.707 2.707L8.293 0.293C8.105 0.105 7.851 0 7.586 0H1C0.448 0 0 0.448 0 1V12C0 12.552 0.448 13 1 13H3V12H1V9Z" fill="#0664D0"/></svg>
+
+                        <h3>Reference Architectures</h3>
+                    </div>
+                    <div class="get-started-description">
+                        <p>Reference architectures document the most optimal architecture to support one or more non-functional requirements.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="get-started-card">
+                <div class="get-started-content" onclick="location.href='./best-practices/0-intro/';" style="cursor: pointer;">
+                    <div class="get-started-title">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.952 4.95V2.05H9.053L7.001 0L4.951 2.05H2.052V4.95L0 7L2.05 9.05V11.949H4.949L6.999 13.999L9.049 11.949H11.948V9.05L13.998 7L11.948 4.95H11.95H11.952ZM10.949 8.636V10.949H8.637L7 12.585L5.363 10.949H3.051V8.636L1.414 7L3.051 5.364V3.051H5.363L7 1.415L8.637 3.051H10.949V5.364L12.586 7L10.949 8.636ZM8.5 5H10L6 10L4 7H5.5L6 8L8.5 5Z" fill="#054A99"/></svg>
+                        <h3>Best Practices</h3>
+                    </div>
+                    <div class="get-started-description">
+                        <p>Best practices document the widely accepted sequence of tasks that provide the most effective way to achieve a desired outcome.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="get-started-card">
+                <div class="get-started-content" onclick="location.href='./guides/0-intro/';" style="cursor: pointer;">
+                    <div class="get-started-title">
+                        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 0C1.791 0 0 2.015 0 4.5C0 5.699 0.421 6.78 1.103 7.581C1.679 8.258 2 9.112 2 10H6C6 9.112 6.321 8.258 6.897 7.581C7.579 6.78 8 5.699 8 4.5C8 2.015 6.209 0 4 0ZM6.135 6.934C5.625 7.533 5.274 8.245 5.108 9H2.892C2.726 8.245 2.375 7.533 1.865 6.934C1.307 6.277 1 5.413 1 4.5C1 2.57 2.346 1 4 1C5.654 1 7 2.57 7 4.5C7 5.413 6.693 6.277 6.135 6.934ZM6 13.5C6 13.775 5.775 14 5.5 14H2.5C2.225 14 2 13.775 2 13.5C2 13.225 2.225 13 2.5 13H5.5C5.775 13 6 13.225 6 13.5ZM6 11.5C6 11.775 5.775 12 5.5 12H2.5C2.225 12 2 11.775 2 11.5C2 11.225 2.225 11 2.5 11H5.5C5.775 11 6 11.225 6 11.5Z" fill="#0664D0"/></svg>
+                        <h3>Guides</h3>
+                    </div>
+                    <div class="get-started-description">
+                        <p>Guides document a sequence of Best Practices that together achieve a desired outcome.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="get-started-card">
+                <div class="get-started-content" onclick="location.href='./tools/0-intro/';" style="cursor: pointer;">
+                    <div class="get-started-title">
+                        <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6.5C3 6.284 2.576 6.07 2 6V1.929C2.726 1.666 2 0.708 2 0H1C1 0.708 0.274 1.666 1 1.929V6C0.424 6.07 0 6.284 0 6.5C0 6.677 0.277 6.831 0.693 6.92L0 9V12.5C0 13.325 0.675 14 1.5 14C2.325 14 3 13.325 3 12.5V9L2.307 6.92C2.723 6.831 3 6.677 3 6.5ZM2 12.5C2 12.775 1.775 13 1.5 13C1.225 13 1 12.775 1 12.5V9.5C1 9.225 1.225 9 1.5 9C1.775 9 2 9.225 2 9.5V12.5ZM11.5 0H10.5C10.225 0 10 0.225 10 0.5V1H9C9 1 9 0 7 0C3 0 3 2 3 4C3 4 3.479 2 5.375 2C6.581 2 6.918 2.726 7 3.303V5L6 7V12.5C6 13.325 6.675 14 7.5 14C8.325 14 9 13.325 9 12.5V7L8 5V4C8 2 10 2 10 2V2.5C10 2.775 10.225 3 10.5 3H11.5C11.775 3 12 2.775 12 2.5V0.5C12 0.225 11.775 0 11.5 0ZM8 12.5C8 12.775 7.775 13 7.5 13C7.225 13 7 12.775 7 12.5V7.5C7 7.225 7.225 7 7.5 7C7.775 7 8 7.225 8 7.5V12.5Z" fill="#0664D0"/></svg>
+                        <h3>Tools</h3>
+                    </div>
+                    <div class="get-started-description">
+                        <p>Viya Forge provides useful Tools for testing and tuning your Viya environments, ensuring it provides maximum value.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-
-
 {% endblock %}
 {% block content %}{% endblock %}
 {% block footer %}{% endblock %}

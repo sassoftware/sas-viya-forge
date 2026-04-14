@@ -8,8 +8,15 @@ theme:
   name: material
   language: LANG
   custom_dir: ../../docs/overrides
-  logo: assets/img/sas-logo-white.png
+  logo: assets/img/sas-logo-blue.png
   favicon: assets/img/favicon.ico
+  icon:
+    admonition:
+      note: fontawesome/regular/bell
+    alternate: sas/language
+    repo: sas/git
+    search: sas/search
+    
   font: false
   features:
     - navigation.tabs
@@ -55,5 +62,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
   - md_in_html
 

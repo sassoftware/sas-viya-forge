@@ -1,4 +1,5 @@
 ---
+title: <YOUR TITLE HERE>
 tags:
   - Reference Architecture
   - Valid From - {{VALID_FROM}}

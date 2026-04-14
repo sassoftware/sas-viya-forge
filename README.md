@@ -6,7 +6,7 @@ SAS Viya Forge enables broad collaboration in the creation of supporting materia
 ### Contents
 SAS Viya Forge provides several content types. For example:
 - Reference Architectures tailored to specific industries, deployment contexts, or technical requirements.
-- Deployment, Implementation, and Operating Guides that walk you through managing Viya environments effectively.
+- Decision, Deployment, Implementation, and Operating Guides that walk you through deploying and managing Viya environments effectively.
 - Best Practices that provide a concise instruction for a specific task or configuration requirement.
 - Validation Scenarios with tooling and test cases to automate performance and reliability testing.
 

@@ -1,3 +1,7 @@
+---
+title: Tags
+---
+
 # Tags
 
 The following tags can be used to find relevant documentation.

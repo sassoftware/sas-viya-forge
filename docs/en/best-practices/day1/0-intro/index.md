@@ -1,3 +1,7 @@
+---
+title: About Day 1
+---
+
 # About Day 1
 
 Day 1 best-practices pertain to best-practices that you use when deploying your SAS Viya environment. These best-practices are therefore related to deployment or implmentation tasks you perform in order to meet / fulfill certain requirements.
