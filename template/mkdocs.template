@@ -41,6 +41,7 @@ extra_css:
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js
+  - js/appinsights.js
   
 markdown_extensions:
   - abbr
