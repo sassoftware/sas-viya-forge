@@ -1,0 +1,2 @@
+This reference architecture provides an overview of how a Viya environment can be deployed to an AWS EKS cluster with multiple Availability Zones.
+This is an updated reference architecture to reflect the improved support for deployments across multiple Availability Zones that was added in Viya 2025.10.
