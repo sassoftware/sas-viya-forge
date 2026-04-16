@@ -1,0 +1,1 @@
+This reference architecture provides an overview of how a Viya environment can be deployed to an AWS EKS cluster with multiple Availability Zones to minimize downtime in case an Availability Zone goes down.
