@@ -10,7 +10,12 @@ By using the selection options below you can find all artifacts that match the s
 Select at least your Viya version and one of the other tags to see the results.
 
 You can also use the global search functionality by pressing the forward-slash button on your keyboard or clicking in the search bar at the top of the screen.
-The global search functionality searches through the entire site for any occurence of the provided string.
+The global search functionality searches through the entire site for any occurrence of the provided string.
+
+!!! note
+
+    Can't find what you need? You can contribute to Viya Forge using the instructions on our [Contribute](../../contributing.md) page.
+    You can also request a new document by creating a [new Issue](https://github.com/sassoftware/sas-viya-forge/issues/new/choose) in our GitHub project or vote for an [existing request](https://github.com/sassoftware/sas-viya-forge/issues).
 
 <div id="search-container" class="md-typeset">
     <h2>Search Options</h2>
