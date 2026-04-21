@@ -19,7 +19,7 @@ To serve our needs, we make the following adjustments to the default IaC scripts
     This addition allows us, together with the related change in the variables.tf file to specify a specific subnet for each node pool. This is required as we want to be able to deploy node pools in specific availability zones, which are linked to the associated subnets.
 
 
-2. In the **main.tf** file, add the following key-value mapping to the postgresql module:
+2. In the **main.tf** file, add the following key-value mapping to the PostgreSQL module:
 
     ```
     db_name  = each.value.db_name

@@ -2,11 +2,11 @@
 
 ### Assumption
 
-Networking infrastructure has been set up so that end users can reach the SAS Viya platform and the platform can reach its datasources, in all configured Availability Zones.
+Networking infrastructure has been set up so that end users can reach the SAS Viya platform and the platform can reach its data sources, in all configured Availability Zones.
 
 ### Components
 
-The following key components make up the refererence architecture:
+The following key components make up the reference architecture:
 
 1. **AKS Node Pools**
   AKS Node Pools are deployed across at least three Availability Zones to ensure clustered services will always be able to achieve a quorum in case an Availability Zones goes down. All node pools are labeled and tainted according to the [SAS documentation](https://go.documentation.sas.com/doc/en/sasadmincdc/default/dplyml0phy0dkr/p0om33z572ycnan1c1ecfwqntf24.htm#n0wj0cyrn1pinen1wcadb0rx6vbm). If following the recommended workload placement strategy this means at least 5 node pools will be created:

@@ -5,5 +5,5 @@ This is especially true when using Custom Applications (previously called OAuth 
 This document tries to capture the different stages involved in using the Viya APIs specifically to run a compute session and provide the requirements that need to be fulfilled when using these specific parts of the API.
 For detailed information on all the API endpoints that are available for SAS Viya, please visit [SAS Developers](https://developer.sas.com/)
 
-This version of the document focusses on using functionality added in SAS Viya 2026.02 that allows custom applications to run SAS compute sessions.
+This version of the document focuses on using functionality added in SAS Viya 2026.02 that allows custom applications to run SAS compute sessions.
 The previous way of working, using dedicated user accounts functioning as service accounts, is still valid and can be found in the previous version of this guide.

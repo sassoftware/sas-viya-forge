@@ -1,4 +1,4 @@
-## Use Case
+## Scenario
 
 The goal of this guide is to provide instructions on how to create and configure custom applications to be able to execute SAS compute sessions.
 Microsoft Entra ID is used as the authentication provider in this guide, although other authentication providers could also be used as long as they are integrated with SAS Viya using OIDC.

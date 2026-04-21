@@ -77,7 +77,7 @@ curl "$INGRESS_URL/SASLogon/oauth/clients/$SPID" -X GET \
 
 **Obtain an Azure access token from the client VM**
 
-An initial access token needs to be obtained through Azure Entra ID. With a Managed Identity assigned to a VM this can be done in the following way when executing the az commandline utility on the VM:
+An initial access token needs to be obtained through Azure Entra ID. With a Managed Identity assigned to a VM this can be done in the following way when executing the az command-line utility on the VM:
 
 ```
 az login --identity --allow-no-subscriptions
@@ -85,7 +85,7 @@ az login --identity --allow-no-subscriptions
 AZURE_ACCESS_TOKEN=$(az account get-access-token --query accessToken --output tsv)
 ```
 
-**Add the clientjwt settings to the Custom Application**
+**Add the client JWT settings to the Custom Application**
 
 Next, we will add the client JWT settings to the custom application.
 This call requires two variables:

@@ -320,7 +320,7 @@ When using more complicated programs that include multiple lines of code, it is 
     </details>
 
 In the previous section, we have already seen how to retrieve the log file for a job.
-For brevity sake, the log file is shown without retrieving it programatically here:
+For brevity sake, the log file is shown without retrieving it programmatically here:
 
 <details>
 <summary>Log</summary>

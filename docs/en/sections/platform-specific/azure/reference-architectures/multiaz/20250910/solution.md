@@ -2,7 +2,7 @@
 
 ### Assumption
 
-Networking infrastructure has been set up so that end users can reach the SAS Viya platform and the platform can reach its datasources, regardless of in which Availability Zone the application is running.
+Networking infrastructure has been set up so that end users can reach the SAS Viya platform and the platform can reach its data sources, regardless of in which Availability Zone the application is running.
 
 ### Components
 

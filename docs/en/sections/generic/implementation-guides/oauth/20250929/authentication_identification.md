@@ -1,7 +1,7 @@
 # 1. Identification and Authentication
 
-The SAS Viya platform can be configured for many different authentication protocols. For the purpose of this document however, there is only one distinction that is relevant. Does your Viya environment authenticate to LDAP or is a third-party authentication provider used? In other words, is Viya able to authenticate users with a username and password combination or does it rely on a third-party to make the authentication decision on its behalve?
-When third-party authentication providers, such as Azure EntraId or Okta, are used, authenticating to the Viya environment may not always be possible for non-interactive processes to succesfully authenticate due to restrictions such as multi-factor authentication (MFA).
+The SAS Viya platform can be configured for many different authentication protocols. For the purpose of this document however, there is only one distinction that is relevant. Does your Viya environment authenticate to LDAP or is a third-party authentication provider used? In other words, is Viya able to authenticate users with a username and password combination or does it rely on a third-party to make the authentication decision on its behalf?
+When third-party authentication providers, such as Azure EntraId or Okta, are used, authenticating to the Viya environment may not always be possible for non-interactive processes to successfully authenticate due to restrictions such as multi-factor authentication (MFA).
 It is in these scenarios that OAuth clients, defined in the Viya environment itself, are used to allow external systems to interact with the Viya environment.
 
 ## Identification
@@ -15,7 +15,7 @@ The guide shows two different ways of registering an OAuth Client ID. This docum
 * --grant-implicit
 * --grant-refresh-token
 
-The authorization-code and refresh-token grant types do not allow for fully non-interactive interaction with the SAS Viya API as there is always a manual action required to obtain an authorization token. There are [security concerns](https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-implicit-grant-flow#security-concerns-with-implicit-grant-flow) with using the implicit grant type. This therefore leaves us with the client-credentials grant type as the only available option. We will see later on in this document that there is another option available when you register your client through the REST API instead of using the CLI. This option will be dicussed in the Runtimes chapter.
+The authorization-code and refresh-token grant types do not allow for fully non-interactive interaction with the SAS Viya API as there is always a manual action required to obtain an authorization token. There are [security concerns](https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-implicit-grant-flow#security-concerns-with-implicit-grant-flow) with using the implicit grant type. This therefore leaves us with the client-credentials grant type as the only available option. We will see later on in this document that there is another option available when you register your client through the REST API instead of using the CLI. This option will be discussed in the Runtimes chapter.
 
 Next to the required --id and --secret options, the --authorities option should be provided in most scenarios. Authorization of the OAuth client will be based on the groups that are specified for this option.
 
@@ -68,7 +68,7 @@ OAUTH_TOKEN=$(curl -k "${INGRESS_URL}/SASLogon/oauth/token" \
           2> /dev/null | jq -r .access_token)
 ```
 
-Note that defining the CLIENT_ID and CLIENT_SECRET variables on the commandline is not recommended.
+Note that defining the CLIENT_ID and CLIENT_SECRET variables on the command-line is not recommended.
 Instead these variables should be provided as environment variables to the process performing the API call. Alternatively you can use a netrc file that contains the credentials and is stored in a secure location.
 
 The contents of the netrc file:

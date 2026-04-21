@@ -11,7 +11,7 @@ tags:
 
 {% include 'guides/deployment-guides/multiaz-aws/20250924/introduction.md' %}
 
-{% include 'sections/platform-specific/aws/deployment-guides/multiaz/20250924/usecase.md' %}
+{% include 'sections/platform-specific/aws/deployment-guides/multiaz/20250924/scenario.md' %}
 
 {% include 'sections/platform-specific/aws/deployment-guides/multiaz/20250924/solution.md' %}
 

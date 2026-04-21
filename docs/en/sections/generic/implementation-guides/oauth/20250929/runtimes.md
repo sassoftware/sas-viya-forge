@@ -64,7 +64,7 @@ We need to ensure we have two things in place:
 1. A Service Account to run the compute sessions under in this Compute Context
 2. A group which we can assign to users that grants permission to use the Compute Context
 
-Asuming you are authenticated as an administrator using in the SAS Viya platform, let's verify these exist.
+Assuming you are authenticated as an administrator using in the SAS Viya platform, let's verify these exist.
 In our environment we have the following Service Account:
 
 <details>
@@ -120,7 +120,7 @@ ModifiedTimeStamp   2025-01-28T12:56:00.247Z
 
 #### Creating a new Compute Context
 
-Asuming you are authenticated as an administrator using in the SAS Viya platform, first create a template file:
+Assuming you are authenticated as an administrator using in the SAS Viya platform, first create a template file:
 ```
 sas-viya compute contexts generate-template --file compute_context_template.json
 ```
@@ -331,7 +331,7 @@ In short, we need to create a job definition containing the SAS code we want to 
     ```
     </details>
 
-    Note that the contextName that is provided in the job definition is just defining that you can definie a contextName when creating the job request. It sets the default value to the SAS Job Execution compute context. We will override this default in the job request.
+    Note that the contextName that is provided in the job definition is just defining that you can define a contextName when creating the job request. It sets the default value to the SAS Job Execution compute context. We will override this default in the job request.
     The id field in the response is used in the subsequent job request to reference this job definition.
 
 2. Creating the job request.
@@ -772,7 +772,7 @@ Now that we have a properly configured OAuth client, we can use it to obtain acc
 
 #### Renewing the refresh token and obtaining access tokens
 
-With the initial access token obtained with the prevous API call, we can now obtain refresh tokens in a way that is repeatable. The difference between the initial refresh token and the refresh token we will obtain next is that the first refresh token was bound to the default sas.cli OAuth client, whilst this new refresh token will be bound to our custom "finance-fronted" OAuth client.
+With the initial access token obtained with the previous API call, we can now obtain refresh tokens in a way that is repeatable. The difference between the initial refresh token and the refresh token we will obtain next is that the first refresh token was bound to the default sas.cli OAuth client, whilst this new refresh token will be bound to our custom "finance-fronted" OAuth client.
 
 1. Obtain a new refresh token
 
@@ -816,7 +816,7 @@ With the initial access token obtained with the prevous API call, we can now obt
 
     </details>
 
-As you can see, you can obtain new refresh tokens with the access tokens already in your posession. This means that as long as you renew the refresh token before it has expired (which would block you from generating the access token required to renew it) there is no further human intervention required.
+As you can see, you can obtain new refresh tokens with the access tokens already in your possession. This means that as long as you renew the refresh token before it has expired (which would block you from generating the access token required to renew it) there is no further human intervention required.
 
 ### Executing a job using an access token for a service account
 
@@ -1225,7 +1225,7 @@ The SAS Cloud Analytic Server can run in two different modes. By default, a CAS 
 
 Although you can interact with the CAS server via the [CAS Management API](https://developer.sas.com/rest-apis/casManagement) directly for high-level operations such as requesting the number of available nodes and creating CASLibs, most interactions with CAS will happen via an established compute session.
 
-Here, our two different scenario's detailed above for running compute sessions using a service account will work differently when interacting with CAS. Compute sessions that are started under a shared account are still considered to run on behalve of a specific end-user (or OAuth client in our case). Hence, CAS sessions started by these compute sessions will still be started as that specific end-user.
+Here, our two different scenario's detailed above for running compute sessions using a service account will work differently when interacting with CAS. Compute sessions that are started under a shared account are still considered to run on behalf of a specific end-user (or OAuth client in our case). Hence, CAS sessions started by these compute sessions will still be started as that specific end-user.
 
 This is easily demonstrated by starting a CAS session from a compute session running on a compute context configured to run under a shared account:
 

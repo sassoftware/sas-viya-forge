@@ -19,7 +19,7 @@ aws eks update-nodegroup-config \
     --scaling-config minSize=2,maxSize=2,desiredSize=2
 ```
 
-It is also advisable to scale down the nodegroups in the primary Availability Zone to prevent them from being accidentally started when the Availability Zone recovers:
+It is also advisable to scale down the node groups in the primary Availability Zone to prevent them from being accidentally started when the Availability Zone recovers:
 
 ```
 aws eks update-nodegroup-config \

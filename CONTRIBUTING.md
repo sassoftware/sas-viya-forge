@@ -14,7 +14,7 @@ Contributing to content can most easily be done in the following way:
 
 1. **Fork the Github source.** See [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) for instructions or use this direct [link](https://github.com/sassoftware/sas-viya-forge/fork). Note that you will need to define the Owner of the forked the repository. If you already have a fork of the repository, make sure it is [up-to-date](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with the upstream repository.
 2. [**Clone the repository**](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to create a local copy on your machine. 
-3. **Create a new branch.** Using the git commandline tool:
+3. **Create a new branch.** Using the git command-line tool:
 ```
 git checkout -b <name of your branch>
 ```
@@ -111,7 +111,7 @@ Content is organized in four categories for which we accept submissions.
 
 ### Best Practices
 
-A Best Practice is the widely accepted **Task Sequence(s)** that is the most effective way to achieve a desired outcome. A Best Practice is best suited for a clearly deliniated and limited scope that usually covers a single requirement that needs to be met. For more elaborate scenarios, a Guide is more appropriate.
+A Best Practice is the widely accepted **Task Sequence(s)** that is the most effective way to achieve a desired outcome. A Best Practice is best suited for a clearly delineated and limited scope that usually covers a single requirement that needs to be met. For more elaborate scenarios, a Guide is more appropriate.
 
 Best Practices are organized by System Lifecycle phases, Day 0, Day 1 and Day 2. Day 0 Best-Practices relate to designing and preparing for deployment. Day 1 Best-Practices deal with implementation of your environment or functionality. Day 2 Best Practices deal with operating and maintaining your environment.
 
