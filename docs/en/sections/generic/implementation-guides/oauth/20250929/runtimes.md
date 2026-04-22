@@ -472,6 +472,7 @@ In short, we need to create a job definition containing the SAS code we want to 
 
     <details>
     <summary>API Response</summary>
+
     ```
     {
         "creationTimeStamp": "2025-02-13T09:43:25.030Z",
@@ -1045,6 +1046,7 @@ Now that we have an access token, we can use it to execute a job using the Viya 
 
     <details>
     <summary>API Response</summary>
+    
     ```
     {
         "creationTimeStamp": "2025-04-01T13:33:15.839Z",

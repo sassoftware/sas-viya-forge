@@ -1,0 +1,108 @@
+# SAS Terminology
+CAS
+caslib
+caslibs
+Decisioning
+Intelligent Decisioning
+SASStudio
+Viya
+
+# Viya API
+authorizedGroups
+connectstring
+contextName
+jobDefinitions
+jobExecution
+jobRequests
+loginCode
+
+# Platforms
+Github
+Gitlab
+OpenShift
+Kubernetes
+
+# Kubernetes
+autoscaler
+namespace
+namespaces
+kustomize
+
+# AWS
+fsType
+FSx
+Intelligent Tiering
+Tiering
+node groups
+volumeMode
+
+# Azure
+az
+az commandline
+Databricks
+Entra
+Entra ID
+user_impersonation
+
+# GCP
+Filestore
+
+# Networking
+CIDR
+CIDRs
+subnet
+subnets
+
+# Data Sources
+PostgreSQL
+
+# Generic IT Terms
+API
+APIs
+command-line
+HTTP
+runtime
+runtimes
+run-time
+failover
+parallelization
+SSD
+SSDs
+SQL
+UID
+UIDs
+GID
+GIDs
+
+# Authentication & Authorization
+client_id
+client_secret
+OAuth
+Okta 
+OIDC
+netrc
+RBAC
+
+# Terraform variables
+user_node_pool
+db_name
+subnet_number
+node_pools
+min_nodes
+administrator_login
+route_table_ids
+aws_fsx_ontap_file_system
+aws_fsx_ontap_storage_virtual_machine
+multi_az
+rwx_filestore_endpoint
+
+# Abbreviations
+img
+
+# Miscellaneous
+Citrix
+crowdsourced
+Ergon
+misconfigurations
+performant
+tunables

@@ -1,4 +1,4 @@
 site/
-config/
+/config/
 __pycache__
 venv

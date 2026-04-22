@@ -1,19 +1,21 @@
-name: Deploy MkDocs site to Azure Static Web Apps
+name: Build and Deploy
 
 env:
   APP_LOCATION: "site"
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches:
       - main
       
 permissions:
   contents: read
+  pull-requests: write
   
 jobs:
-  build_and_deploy:
+  build:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +32,43 @@ jobs:
       - run: mkdocs build -f config/en/mkdocs.yml
       - run: cp docs/index.html site/
       - run: cp webapp_config/staticwebapp.config.json site/
-      - name: Build And Deploy
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site/
+
+  spellcheck:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site/
+      - name: Run Vale spellcheck
+        uses: vale-cli/vale-action@v2
+        with:
+          files: docs/en
+          reporter: github-pr-review
+          fail_on_error: true
+          vale_flags: "--config .vale/.vale.ini"
+
+  deploy:
+    needs: 
+      - build
+      - spellcheck
+    runs-on: self-hosted
+    if: github.event_name == 'push'
+    steps:
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site/
+      - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}

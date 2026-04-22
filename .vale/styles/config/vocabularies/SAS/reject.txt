@@ -1,0 +1,6 @@
+# Only accept az commandline
+\baz\b
+# Only accept Entra ID
+\bEntra\b
+# Only accept Intelligent Tiering
+\bTiering\b
