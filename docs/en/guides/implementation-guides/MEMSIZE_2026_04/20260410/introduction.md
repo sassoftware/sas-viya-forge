@@ -1,0 +1,8 @@
+## Introduction
+Starting with SAS Viya releases after 2025.09, with final delivery in 2026.04, changes have been made to the behavior of the CPUCOUNT, MEMSIZE, and SUMSIZE system options. In addition, the default memory values defined by the SAS Launcher Service have been updated. 
+
+- CPUCOUNT=ACTUAL now returns the CPU limit of the sas-programming-environment container rather than a value derived from the node type. If you previously set the CPUCOUNT value to less than or equal to the container CPU limit, it is not modified. Otherwise, it is now automatically adjusted to ACTUAL.
+- The default memory limit values defined by sas.launcher.max and sas.launcher.default have increased from 2 GiB to 6 GiB. These properties establish global limits and defaults for memory that apply to pods that are created by the Launcher service. Default values are only effective when pod template values are undefined.
+- The SUMSIZE system option previously had a default value of 0. The default value has changed to 2G. If a nonzero value is specified, the runtime value of SUMSIZE is set to the explicitly specified value.
+- The MEMSIZE system option previously had a default value of 2 G. The default behavior has changed to MEMSIZE=MAX, which is based on the memory limit of the sas-programming-environment container.
+For more information, see the SAS documentation on [MEMSIZE system option](https://go.documentation.sas.com/doc/en/pgmsascdc/default/lesysoptsref/n09y5anvvpzrmnn0ztkyf59qgzvr.htm)
