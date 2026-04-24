@@ -31,7 +31,6 @@ jobs:
       - run: bash template/generate-nav-tree.sh docs/en config/en/mkdocs.yml
       - run: mkdocs build -f config/en/mkdocs.yml
       - run: cp docs/index.html site/
-      - run: cp webapp_config/staticwebapp.config.json site/
       - name: Upload site artifact
         uses: actions/upload-artifact@v4
         with:
