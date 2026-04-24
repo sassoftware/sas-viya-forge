@@ -12,5 +12,5 @@ The SAS Validation Scenarios are valuable for any Viya environment. They can be 
 
 ## Link
 
-The SAS Validation Scenarios repository can be found [here](https://github.com/sas-rnd-aat/sas-validation-scenarios)
+The SAS Validation Scenarios are expected to be published shortly. Please check back soon.
 

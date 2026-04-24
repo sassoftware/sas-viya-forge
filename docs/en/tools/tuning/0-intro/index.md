@@ -10,4 +10,4 @@ Each scenario describes the situation in which it is applicable. Some scenarios 
 
 ## Link
 
-The SAS Tuning repository can be found [here](https://gitlab.sas.com/aat/sas-viya-tuning/)
+The SAS Tuning repository can be found [here](https://github.com/sassoftware/sas-viya-tuning)
