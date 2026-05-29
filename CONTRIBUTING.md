@@ -78,6 +78,8 @@ Usage: ./generate-new-document.sh <options>
 Generates a new document directory with the specified name and type.
 Options:
   -n, --name          Specify the document filename (mandatory)
+  -t, --title         Specify the document title (mandatory)
+  -c, --content-type  Specify the content type (mandatory)
   -t, --type          Specify the document type (mandatory).
                       Valid values are best-practice, guide, reference-architecture, pathway
   -g, --guide-type    Specify the guide type (mandatory if document type is 'guide').
@@ -86,8 +88,8 @@ Options:
                       Valid values are 0, 1, 2
   -p, --platform      Specify the platform (optional)
                       Valid values are AWS, Azure, GCP, OpenShift
-  -b, --valid-from    Specify the valid from SAS Viya version (mandatory)
-  -e, --valid-to      Specify the valid to SAS Viya version (optional)
+  -b, --valid-from    Specify the valid from date (mandatory)
+  -e, --valid-to      Specify the valid to date (optional)
   -s, --subject       Specify the subject (optional).
                       Valid values are Security, Reliability, Cost, Performance & Scale, Efficiency
   -x, --external      Specify if the document links to external content (optional)
@@ -95,8 +97,7 @@ Options:
 ```
 
 - The name of the document should a short name that can be used as folder and filenames. For example, for a document on High Availability deployment on AKS, the name could be ha-azure.
-    - The title of the document can be provided within the generated templates.
-- The type, guide-type and day options are explained in the next section "Content Types"
+- The content-type, guide-type and day options are explained in the next section "Content Types"
 - The valid-from and valid-to options are explained in the section "Versioning"
 - The external option is explained in the section "External Content"
 
@@ -219,7 +220,7 @@ To ensure it is clear to the reader what the validity of a certain document is, 
 The sections folder that was created for you contains an img folder where you can store images. The scenario.md file contains an example of how to include an image.
 The syntax for including images in Markdown is the following:
 
-\!\[\<Image Description\>\]\(\<Image Source\>\)
+!\[<Image Description\>\](<Image Source\>)
 
 The image source URL has been generated for you. You only need to update the image description and filename.
 Images can be placed in other files within the same sections folder as well, using the same syntax.

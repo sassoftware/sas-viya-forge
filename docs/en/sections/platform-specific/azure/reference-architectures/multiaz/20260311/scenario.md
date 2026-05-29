@@ -1,4 +1,4 @@
-![Architecture Overview](../../../sections/platform-specific/azure/reference-architectures/multiaz/20260311/img/Azure_MultiAZ_Reference.png)
+![Architecture Overview](/sections/platform-specific/azure/reference-architectures/multiaz/20260311/img/Azure_MultiAZ_Reference.png)
 
 ## Scenario
 
@@ -31,5 +31,5 @@ Although cross Availability Zone deployments of SAS Viya provide the highest lev
 If the availability requirements of the Viya environments do not necessitate an active-active multi Availability Zone setup. An active-passive setup may be more performant and cost-effective.
 The previous version of this reference architecture and the accompanying deployment guide document this scenario.
 
-- [Reference Architecture](../../../reference-architectures/multiaz-azure/20250910/index.md)
-- [Deployment Guide](../../../guides/deployment-guides/multiaz-aws/20250910/index.md)
+- [Reference Architecture](/reference-architectures/multiaz-azure/20250910/index.md)
+- [Deployment Guide](/guides/deployment-guides/multiaz-azure/20250910/index.md)

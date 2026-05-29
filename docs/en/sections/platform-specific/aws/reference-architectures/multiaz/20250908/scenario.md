@@ -1,4 +1,4 @@
-![Architecture Overview](../../../sections/platform-specific/aws/reference-architectures/multiaz/20250908/img/AWS_MultiAZ_Reference.png)
+![Architecture Overview](/sections/platform-specific/aws/reference-architectures/multiaz/20250908/img/AWS_MultiAZ_Reference.png)
 
 ## Scenario
 

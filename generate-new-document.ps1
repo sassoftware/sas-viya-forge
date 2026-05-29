@@ -2,6 +2,7 @@
 
 param(
     [string]$Name,
+    [string]$Title,
     [string]$Type,
     [string]$GuideType,
     [string]$Day,
@@ -19,6 +20,7 @@ function Show-Usage {
     Write-Host "Generates a new document directory with the specified name and type."
     Write-Host "Parameters:"
     Write-Host "  -Name                Specify the document filename (mandatory)"
+    Write-Host "  -Title               Specify the document title (mandatory)"
     Write-Host "  -Type                Specify the document type (mandatory)."
     Write-Host "                       Valid values are best-practice, guide, reference-architecture, pathway"
     Write-Host "  -GuideType           Specify the guide type (mandatory if document type is 'guide')."
@@ -44,6 +46,11 @@ if ($Help) {
 # Validate mandatory parameters
 if ([string]::IsNullOrEmpty($Name)) {
     Write-Host "Document name is missing."
+    Show-Usage
+}
+
+if ([string]::IsNullOrEmpty($Title)) {
+    Write-Host "Document title is missing."
     Show-Usage
 }
 
@@ -107,7 +114,7 @@ $Date = Get-Date -Format "yyyyMMdd"
 
 # Determine the template and target directory based on document type
 if ($Type -eq "guide") {
-    $TemplateDir = "docs/en/templates/$Type/$GuideType"
+    $TemplateDir = "docs/en/templates/$Type/$GuideType-guides"
     $TargetDir = "docs/en/guides/${GuideType}-guides/$Name/$Date"
 } elseif ($Type -eq "best-practice") {
     $TemplateDir = "docs/en/templates/best-practice"
@@ -150,6 +157,9 @@ New-Item -ItemType Directory -Path $TargetDir -Force | Out-Null
 # Copy index file to the target directory
 Copy-Item -Path "$TemplateDir/index.md" -Destination "$TargetDir/"
 
+# Create the title file
+Set-Content -Path "$TargetDir/../.title" -Value $Title
+
 # Copy introduction file and create sections if not pathway or external content
 if ($Type -ne "pathway" -and -not $ExternalContent) {
     Copy-Item -Path "$TemplateDir/introduction.md" -Destination "$TargetDir/"
@@ -189,6 +199,7 @@ if (-not [string]::IsNullOrEmpty($ValidTo)) {
 
 $Content = Get-Content $IndexFile
 $Content = $Content -replace "{{VALID_FROM}}", $ValidFrom
+$Content = $Content -replace "{{ DOCUMENT_TITLE }}", $Title
 Set-Content -Path $IndexFile -Value $Content
 
 # Replace links in index.md
@@ -208,17 +219,10 @@ if ($Type -ne "pathway" -and -not $ExternalContent) {
     $Content = $Content -replace "{{\s*SOLUTION_LINK\s*}}", $SolutionLink
     Set-Content -Path $IndexFile -Value $Content
 
-    $ImageLink = $SectionsDir + "/img/ExampleImage.png"
-    $IndexDir = Split-Path -Parent $IndexFile
-    $IndexFull = [System.IO.Path]::GetFullPath($IndexDir) + [System.IO.Path]::DirectorySeparatorChar
-    $ImageFull = [System.IO.Path]::GetFullPath($ImageLink)
-    $BaseUri = New-Object System.Uri($IndexFull)
-    $TargetUri = New-Object System.Uri($ImageFull)
-    $ImageRelativeLink = [uri]::UnescapeDataString($BaseUri.MakeRelativeUri($TargetUri).ToString()) -replace '\\','/'
-
+    $ImageLink = $SectionsDir.Replace("docs/en/", "") + "/img/ExampleImage.png"
     $ScenarioFile = "$SectionsDir/scenario.md"
     $Content = Get-Content $ScenarioFile
-    $Content = $Content -replace "{{\s*IMAGE_LINK\s*}}", $ImageRelativeLink
+    $Content = $Content -replace "{{\s*IMAGE_LINK\s*}}", $ImageLink
     Set-Content -Path $ScenarioFile -Value $Content
 }
 
@@ -227,10 +231,9 @@ Write-Host "Finished creating new document structure."
 Write-Host "Document Directory: $TargetDir"
 
 if ($Type -eq "pathway" -or $ExternalContent) {
-    Write-Host "Please add your title and links to the index.md file in the document directory."
+    Write-Host "Please add your links to the index.md file in the document directory."
 } else {
     Write-Host "Sections Directory: $SectionsDir"
-    Write-Host "Please add your title to the index.md file in the document directory."
     Write-Host "Please add your introduction to the introduction.md file in the document directory."
     Write-Host "Please add your content to the section files in the sections directory."
 }

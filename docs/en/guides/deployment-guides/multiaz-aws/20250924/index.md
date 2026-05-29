@@ -19,5 +19,5 @@ tags:
 
 Please also have a look at the related resources for this deployment guide:
 
-- [Reference Architecture](../../../../reference-architectures/multiaz-aws/20250908/index.md)
-- [Operating Guide](../../../operating-guides/multiaz-aws/20250930/index.md)
+- [Reference Architecture](/reference-architectures/multiaz-aws/20250908/index.md)
+- [Operating Guide](/guides/operating-guides/multiaz-aws/20250930/index.md)

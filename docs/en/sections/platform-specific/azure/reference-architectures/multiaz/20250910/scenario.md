@@ -1,4 +1,4 @@
-![Architecture Overview](../../../sections/platform-specific/azure/reference-architectures/multiaz/20250910/img/Azure_MultiAZ_Reference.png)
+![Architecture Overview](/sections/platform-specific/azure/reference-architectures/multiaz/20250910/img/Azure_MultiAZ_Reference.png)
 
 ## Scenario
 

@@ -1,12 +1,12 @@
 ---
-title: <YOUR TITLE HERE>
+title: "{{ DOCUMENT_TITLE }}"
 tags:
   - Pathway
   - Valid From - {{VALID_FROM}}
 ---
 
 <!-- Replace with your title -->
-# <YOUR TITLE HERE>
+# {{ DOCUMENT_TITLE }}
 
 <!-- Provide a brief description of the external content you are linking to. See the example below. -->
 

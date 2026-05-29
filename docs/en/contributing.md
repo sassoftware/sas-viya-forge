@@ -6,10 +6,6 @@ Using the following guidelines, you are able to contribute to the assets on this
 This site is built using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/). This means that all pages are creating from plain text markdown documents.
 These documents are stored in a Git repository. The source code of this page can be found on [Github](https://github.com/sassoftware/sas-viya-forge) or using the Github link in the banner of this site.
 
-To ensure consistency, each document type comes with its own predefined layout which contributors need to follow when adding content. We provide an easy script to create the required files for your contribution. See the instructions below.
-
-## Instructions
-
 Contributing to content can most easily be done in the following way:
 
 1. **Fork the Github source.** See [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) for instructions or use this direct [link](https://github.com/sassoftware/sas-viya-forge/fork). Note that you will need to define the Owner of the forked the repository. If you already have a fork of the repository, make sure it is [up-to-date](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with the upstream repository.
@@ -78,6 +74,8 @@ Usage: ./generate-new-document.sh <options>
 Generates a new document directory with the specified name and type.
 Options:
   -n, --name          Specify the document filename (mandatory)
+  -t, --title         Specify the document title (mandatory)
+  -c, --content-type  Specify the content type (mandatory)
   -t, --type          Specify the document type (mandatory).
                       Valid values are best-practice, guide, reference-architecture, pathway
   -g, --guide-type    Specify the guide type (mandatory if document type is 'guide').
@@ -95,8 +93,7 @@ Options:
 ```
 
 - The name of the document should a short name that can be used as folder and filenames. For example, for a document on High Availability deployment on AKS, the name could be ha-azure.
-    - The title of the document can be provided within the generated templates.
-- The type, guide-type and day options are explained in the next section "Content Types"
+- The content-type, guide-type and day options are explained in the next section "Content Types"
 - The valid-from and valid-to options are explained in the section "Versioning"
 - The external option is explained in the section "External Content"
 

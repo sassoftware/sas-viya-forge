@@ -19,6 +19,34 @@ function Read-TitleFile {
     return Get-Content -Path $FilePath -Raw | ForEach-Object { $_.Trim() }
 }
 
+# Function to process sections within a folder
+function Process-Sections {
+    param(
+        [string]$FilePath,
+        [string]$Title,
+        [string]$Indent,
+        [string]$OutputFile,
+        [string]$RootDir
+    )
+    
+    $relFilePath = $FilePath.Substring($RootDir.Length).TrimStart('\').Replace('\', '/')
+    
+    Add-Content -Path $OutputFile -Value "$Indent- `"$Title`":"
+    $newIndent = $Indent + "  "
+    Add-Content -Path $OutputFile -Value "$newIndent- `"Introduction`": $relFilePath"
+    
+    # Extract section links from the markdown file
+    $content = Get-Content -Path $FilePath -Raw
+    $sectionPattern = '\[([^\]]+)\]\((/sections[^)]*\.md)\)'
+    $matches = [regex]::Matches($content, $sectionPattern)
+    
+    foreach ($match in $matches) {
+        $sectionTitle = $match.Groups[1].Value
+        $sectionLink = $match.Groups[2].Value
+        Add-Content -Path $OutputFile -Value "$newIndent- `"$sectionTitle`": $sectionLink"
+    }
+}
+
 # Function to process a single folder
 function Process-Folder {
     param(
@@ -44,7 +72,17 @@ function Process-Folder {
     $filePath = Join-Path $Folder "index.md"
     $relFilePath = $filePath.Substring($RootDir.Length).TrimStart('\').Replace('\', '/')
     
-    Add-Content -Path $OutputFile -Value "$Indent- `"$title`": $relFilePath"
+    # Check if the file contains section links
+    $content = Get-Content -Path $filePath -Raw
+    $sectionPattern = '\[([^\]]+)\]\((/sections[^)]*\.md)\)'
+    
+    if ($content -match $sectionPattern) {
+        # File contains sections, process them
+        Process-Sections -FilePath $filePath -Title $title -Indent $Indent -OutputFile $OutputFile -RootDir $RootDir
+    } else {
+        # No sections, output as before
+        Add-Content -Path $OutputFile -Value "$Indent- `"$title`": $relFilePath"
+    }
 }
 
 # Function to generate nav tree recursively
@@ -137,7 +175,7 @@ function Main {
         [string]$OutputFile
     )
     
-    $topLevelDirs = @("reference-architectures", "best-practices", "guides", "pathways")
+    $topLevelDirs = @("reference-architectures", "best-practices", "guides", "pathways", "tools")
     
     if ([string]::IsNullOrEmpty($RootDir) -or [string]::IsNullOrEmpty($OutputFile)) {
         Write-Host "Usage: .\generate-nav-tree.ps1 -RootDir <root_directory> -OutputFile <output_file>"
