@@ -15,7 +15,7 @@ usage() {
     echo "  -d, --day           Specify the day in the lifecycle (mandatory if content type is 'best-practice')."
     echo "                      Valid values are 0, 1, 2"
     echo "  -p, --platform      Specify the platform (optional)"
-    echo "                      Valid values are AWS, Azure, GCP, OpenShift"
+    echo "                      Valid values are AWS, Azure, CNCF, GCP, OpenShift"
     echo "  -b, --valid-from    Specify the valid from SAS Viya version (mandatory)"
     echo "  -e, --valid-to      Specify the valid to SAS Viya version (optional)"
     echo "  -s, --subject       Specify the subject (optional)."
@@ -185,7 +185,7 @@ fi
 
 if [ -n "$PLATFORM" ]; 
 then
-    if [ "$PLATFORM" != "AWS" ] && [ "$PLATFORM" != "Azure" ] && [ "$PLATFORM" != "GCP" ] && [ "$PLATFORM" != "OpenShift" ]; 
+    if [ "$PLATFORM" != "AWS" ] && [ "$PLATFORM" != "Azure" ] && [ "$PLATFORM" != "CNCF" ] && [ "$PLATFORM" != "GCP" ] && [ "$PLATFORM" != "OpenShift" ]; 
     then
         echo "Invalid platform: $PLATFORM"
         usage

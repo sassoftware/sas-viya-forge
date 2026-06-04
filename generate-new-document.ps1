@@ -28,7 +28,7 @@ function Show-Usage {
     Write-Host "  -Day                 Specify the day in the lifecycle (mandatory if document type is 'best-practice')."
     Write-Host "                       Valid values are 0, 1, 2"
     Write-Host "  -Platform            Specify the platform (optional)"
-    Write-Host "                       Valid values are AWS, Azure, GCP, OpenShift"
+    Write-Host "                       Valid values are AWS, Azure, CNCF, GCP, OpenShift"
     Write-Host "  -ValidFrom           Specify the valid from version (mandatory)"
     Write-Host "  -ValidTo             Specify the valid to version (optional)"
     Write-Host "  -Subject             Specify the subject (optional)."
@@ -102,7 +102,7 @@ if ([string]::IsNullOrEmpty($ValidFrom)) {
 
 # Validate platform if provided
 if (-not [string]::IsNullOrEmpty($Platform)) {
-    $validPlatforms = @("AWS", "Azure", "GCP", "OpenShift")
+    $validPlatforms = @("AWS", "Azure", "CNCF", "GCP", "OpenShift")
     if ($validPlatforms -notcontains $Platform) {
         Write-Host "Invalid platform: $Platform"
         Show-Usage
