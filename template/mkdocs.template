@@ -4,6 +4,12 @@ site_url: https://viyaforge.sas.com/
 docs_dir: '../../docs/LANG' 
 site_dir: '../../site/LANG' 
 
+validation:
+  links:
+    absolute_links: relative_to_docs
+    anchors: warn
+    unrecognized_links: warn
+
 theme: 
   name: material
   language: LANG

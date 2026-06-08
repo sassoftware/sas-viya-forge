@@ -13,7 +13,7 @@ To ensure consistency, each document type comes with its own predefined layout w
 Contributing to content can most easily be done in the following way:
 
 1. **Fork the Github source.** See [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) for instructions or use this direct [link](https://github.com/sassoftware/sas-viya-forge/fork). Note that you will need to define the Owner of the forked the repository. If you already have a fork of the repository, make sure it is [up-to-date](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with the upstream repository.
-2. [**Clone the repository**](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to create a local copy on your machine. 
+2. [**Clone your forked repository**](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to create a local copy on your machine. 
 3. **Create a new branch.** Using the git command-line tool:
 ```
 git checkout -b <name of your branch>
@@ -73,32 +73,57 @@ The warning message stating your changes cannot be merged is expected and will a
 
 The generate-new-document.sh script creates all the necessary template files needed for a new contribution. It accepts various arguments, based on the type of content you want to contribute.
 
+On Linux / macOS:
 ```
 Usage: ./generate-new-document.sh <options>
 Generates a new document directory with the specified name and type.
 Options:
   -n, --name          Specify the document filename (mandatory)
-  -t, --type          Specify the document type (mandatory).
+  -t, --title         Specify the document title (mandatory)
+  -c, --content-type  Specify the content type (mandatory)
                       Valid values are best-practice, guide, reference-architecture, pathway
-  -g, --guide-type    Specify the guide type (mandatory if document type is 'guide').
+  -g, --guide-type    Specify the guide type (mandatory if document type is 'guide')
                       Valid values are decision, implementation, deployment, operating
-  -d, --day           Specify the day in the lifecycle (mandatory if document type is 'best-practice').
+  -d, --day           Specify the day in the lifecycle (mandatory if document type is 'best-practice')
                       Valid values are 0, 1, 2
   -p, --platform      Specify the platform (optional)
                       Valid values are AWS, Azure, GCP, OpenShift
-  -b, --valid-from    Specify the valid from SAS Viya version (mandatory)
-  -e, --valid-to      Specify the valid to SAS Viya version (optional)
+  -b, --valid-from    Specify the valid from date (mandatory)
+  -e, --valid-to      Specify the valid to date (optional)
   -s, --subject       Specify the subject (optional).
                       Valid values are Security, Reliability, Cost, Performance & Scale, Efficiency
   -x, --external      Specify if the document links to external content (optional)
   -h, --help          Display this help message
 ```
 
+On Windows:
+```
+Usage: generate-new-document.ps1 -Options
+Generates a new document directory with the specified name and type.
+Parameters:
+  -Name                Specify the document filename (mandatory)
+  -Title               Specify the document title (mandatory)
+  -Type                Specify the document type (mandatory)
+                       Valid values are best-practice, guide, reference-architecture, pathway
+  -GuideType           Specify the guide type (mandatory if document type is 'guide')
+                       Valid values are decision, implementation, deployment, operating
+  -Day                 Specify the day in the lifecycle (mandatory if document type is 'best-practice')
+                       Valid values are 0, 1, 2
+  -Platform            Specify the platform (optional)
+                       Valid values are AWS, Azure, CNCF, GCP, OpenShift
+  -ValidFrom           Specify the valid from version (mandatory)
+  -ValidTo             Specify the valid to version (optional)
+  -Subject             Specify the subject (optional)
+                       Valid values are Security, Reliability, Cost, Performance & Scale, Efficiency
+  -ExternalContent     Specify if the document links to external content (optional)
+  -Help                Display this help message
+```
+
 - The name of the document should a short name that can be used as folder and filenames. For example, for a document on High Availability deployment on AKS, the name could be ha-azure.
-    - The title of the document can be provided within the generated templates.
-- The type, guide-type and day options are explained in the next section "Content Types"
-- The valid-from and valid-to options are explained in the section "Versioning"
-- The external option is explained in the section "External Content"
+- The content-type, guide-type and day options are explained in the next section "Content Types".
+- The platform refers to a specific platform for which the content is applicable. Use CNCF for any of the [CNCF certified Kubernetes distributions](https://www.cncf.io/training/certification/software-conformance/) that are not AWS, Azure, GCP or OpenShift.
+- The valid-from and valid-to options are explained in the section "Versioning".
+- The external option is explained in the section "External Content".
 
 ## Content Types
 
@@ -219,7 +244,7 @@ To ensure it is clear to the reader what the validity of a certain document is, 
 The sections folder that was created for you contains an img folder where you can store images. The scenario.md file contains an example of how to include an image.
 The syntax for including images in Markdown is the following:
 
-\!\[\<Image Description\>\]\(\<Image Source\>\)
+!\[<Image Description\>\](<Image Source\>)
 
 The image source URL has been generated for you. You only need to update the image description and filename.
 Images can be placed in other files within the same sections folder as well, using the same syntax.
@@ -247,6 +272,19 @@ Now, you can run the preview-site.sh script, which will install the necessary de
 ```
 
 To stop the preview, simply hit CTRL+C.
+
+## Spell Checking
+
+An automatic spell checker will be run on any contribution. This spell checker is run using [vale](https://vale.sh/).
+Vale can be installed by following the instructions found [here](https://docs.vale.sh/topics/installation).
+
+Once installed, you can run the spell checker using the project specific configuration using the following command:
+
+```
+vale --config .vale/.vale.ini docs/en
+```
+
+Please correct any spelling mistakes before submitting your contribution. If words are unknown to Vale, you can add them to the project dictionary: .vale/styles/config/vocabularies/SAS/accept.txt
 
 ## Contributor License Agreement
 Contributions to this project must be accompanied by a signed [Contributor Agreement](ContributorAgreement.txt).

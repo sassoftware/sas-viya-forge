@@ -7,14 +7,15 @@ usage() {
     echo "Generates a new document directory with the specified name and type."
     echo "Options:"
     echo "  -n, --name          Specify the document filename (mandatory)"
-    echo "  -t, --type          Specify the document type (mandatory)."
+    echo "  -t, --title         Specify the document title (mandatory)"
+    echo "  -c, --content-type  Specify the content type (mandatory)."
     echo "                      Valid values are best-practice, guide, reference-architecture, pathway"
-    echo "  -g, --guide-type    Specify the guide type (mandatory if document type is 'guide')."
+    echo "  -g, --guide-type    Specify the guide type (mandatory if content type is 'guide')."
     echo "                      Valid values are decision, implementation, deployment, operating"
-    echo "  -d, --day           Specify the day in the lifecycle (mandatory if document type is 'best-practice')."
+    echo "  -d, --day           Specify the day in the lifecycle (mandatory if content type is 'best-practice')."
     echo "                      Valid values are 0, 1, 2"
     echo "  -p, --platform      Specify the platform (optional)"
-    echo "                      Valid values are AWS, Azure, GCP, OpenShift"
+    echo "                      Valid values are AWS, Azure, CNCF, GCP, OpenShift"
     echo "  -b, --valid-from    Specify the valid from SAS Viya version (mandatory)"
     echo "  -e, --valid-to      Specify the valid to SAS Viya version (optional)"
     echo "  -s, --subject       Specify the subject (optional)."
@@ -59,8 +60,12 @@ while [[ $# -gt 0 ]]; do
             DOCUMENT_NAME="$2"
             shift 2
             ;;
-        -t|--type)
-            DOCUMENT_TYPE="$2"
+        -t|--title)
+            DOCUMENT_TITLE="$2"
+            shift 2
+            ;;
+        -c|--content-type)
+            CONTENT_TYPE="$2"
             shift 2
             ;;
         -g|--guide-type)
@@ -113,26 +118,33 @@ then
     usage
 fi
 
-# If document name is not provided, print the usage instructions
-if [ -z "$DOCUMENT_TYPE" ]; 
+# If document title is not provided, print the usage instructions
+if [ -z "$DOCUMENT_TITLE" ]; 
 then
-    echo "Document type is missing."
+    echo "Document title is missing."
     usage
 fi
 
-# Validate document type
-if [ "$DOCUMENT_TYPE" != "best-practice" ] && [ "$DOCUMENT_TYPE" != "guide" ] && [ "$DOCUMENT_TYPE" != "reference-architecture" ] && [ "$DOCUMENT_TYPE" != "pathway" ]; 
+# If content type is not provided, print the usage instructions
+if [ -z "$CONTENT_TYPE" ]; 
 then
-    echo "Invalid document type: $DOCUMENT_TYPE"
+    echo "Content type is missing."
     usage
 fi
 
-# Validate guide type is set if document type is guide
-if [ "$DOCUMENT_TYPE" = "guide" ];
+# Validate content type
+if [ "$CONTENT_TYPE" != "best-practice" ] && [ "$CONTENT_TYPE" != "guide" ] && [ "$CONTENT_TYPE" != "reference-architecture" ] && [ "$CONTENT_TYPE" != "pathway" ]; 
+then
+    echo "Invalid content type: $CONTENT_TYPE"
+    usage
+fi
+
+# Validate guide type is set if content type is guide
+if [ "$CONTENT_TYPE" = "guide" ];
 then
     if [ -z "$GUIDE_TYPE" ]; 
     then
-        echo "Document type \"guide\" provided, but Guide Type is missing."
+        echo "Content type \"guide\" provided, but Guide Type is missing."
         usage
     else
         # Validate guide type
@@ -145,12 +157,12 @@ then
 fi
 
 
-# Validate day is set if document type is best-practice
-if [ "$DOCUMENT_TYPE" = "best-practice" ];
+# Validate day is set if content type is best-practice
+if [ "$CONTENT_TYPE" = "best-practice" ];
 then
     if [ -z "$DAY" ]; 
     then
-        echo "Document type \"best-practice\" provided, but Day is missing."
+        echo "Content type \"best-practice\" provided, but Day is missing."
         usage
     else
         # Validate day
@@ -173,7 +185,7 @@ fi
 
 if [ -n "$PLATFORM" ]; 
 then
-    if [ "$PLATFORM" != "AWS" ] && [ "$PLATFORM" != "Azure" ] && [ "$PLATFORM" != "GCP" ] && [ "$PLATFORM" != "OpenShift" ]; 
+    if [ "$PLATFORM" != "AWS" ] && [ "$PLATFORM" != "Azure" ] && [ "$PLATFORM" != "CNCF" ] && [ "$PLATFORM" != "GCP" ] && [ "$PLATFORM" != "OpenShift" ]; 
     then
         echo "Invalid platform: $PLATFORM"
         usage
@@ -182,18 +194,18 @@ fi
 
 DATE=$(date +%Y%m%d)
 
-# Determine the template and target directory based on document type
-if [ "$DOCUMENT_TYPE" == "guide" ];
+# Determine the template and target directory based on content type
+if [ "$CONTENT_TYPE" == "guide" ];
 then
-    TEMPLATE_DIR="docs/en/templates/$DOCUMENT_TYPE/$GUIDE_TYPE-guides"
+    TEMPLATE_DIR="docs/en/templates/$CONTENT_TYPE/$GUIDE_TYPE-guides"
     TARGET_DIR="docs/en/guides/${GUIDE_TYPE}-guides/$DOCUMENT_NAME/$DATE"
-elif [ "$DOCUMENT_TYPE" == "best-practice" ];
+elif [ "$CONTENT_TYPE" == "best-practice" ];
 then
     TEMPLATE_DIR="docs/en/templates/best-practice"
     TARGET_DIR="docs/en/best-practices/day${DAY}/$DOCUMENT_NAME/$DATE"
 else
-    TEMPLATE_DIR="docs/en/templates/$DOCUMENT_TYPE"
-    TARGET_DIR="docs/en/${DOCUMENT_TYPE}s/$DOCUMENT_NAME/$DATE"
+    TEMPLATE_DIR="docs/en/templates/$CONTENT_TYPE"
+    TARGET_DIR="docs/en/${CONTENT_TYPE}s/$DOCUMENT_NAME/$DATE"
 fi
 
 # If external content flag is set, use the external content template instead
@@ -209,21 +221,21 @@ then
     exit 1
 fi
 
-# Determine the sections directory based on platform and document type
+# Determine the sections directory based on platform and content type
 if [ -z "$PLATFORM" ];
 then
-    if [ "$DOCUMENT_TYPE" == "guide" ];
+    if [ "$CONTENT_TYPE" == "guide" ];
     then
         SECTIONS_DIR="docs/en/sections/generic/$GUIDE_TYPE-guides/$DOCUMENT_NAME/$DATE"
     else
-        SECTIONS_DIR="docs/en/sections/generic/${DOCUMENT_TYPE}s/$DOCUMENT_NAME/$DATE"
+        SECTIONS_DIR="docs/en/sections/generic/${CONTENT_TYPE}s/$DOCUMENT_NAME/$DATE"
     fi
 else
-    if [ "$DOCUMENT_TYPE" == "guide" ];
+    if [ "$CONTENT_TYPE" == "guide" ];
     then
         SECTIONS_DIR="docs/en/sections/platform-specific/${PLATFORM,,}/$GUIDE_TYPE-guides/$DOCUMENT_NAME/$DATE"
     else
-        SECTIONS_DIR="docs/en/sections/platform-specific/${PLATFORM,,}/${DOCUMENT_TYPE}s/$DOCUMENT_NAME/$DATE"
+        SECTIONS_DIR="docs/en/sections/platform-specific/${PLATFORM,,}/${CONTENT_TYPE}s/$DOCUMENT_NAME/$DATE"
     fi
 fi
 
@@ -234,7 +246,10 @@ mkdir -p "$TARGET_DIR"
 # Copy index files to the target directory
 cp "$TEMPLATE_DIR/index.md" "$TARGET_DIR/"
 
-if [ "$DOCUMENT_TYPE" != "pathway" ] && [ "$EXTERNAL_CONTENT" = false ];
+# Create the title file
+echo "$DOCUMENT_TITLE" > "$TARGET_DIR/../.title"
+
+if [ "$CONTENT_TYPE" != "pathway" ] && [ "$EXTERNAL_CONTENT" = false ];
 then
     # Copy introduction file to the target directory
     cp "$TEMPLATE_DIR/introduction.md" "$TARGET_DIR/"
@@ -265,43 +280,34 @@ if [ ! -z "$VALID_TO" ]; then
 fi
 
 sed_inplace "s/{{VALID_FROM}}/$VALID_FROM/g" "$TARGET_DIR/index.md"
+sed_inplace "s/{{ DOCUMENT_TITLE }}/$DOCUMENT_TITLE/g" "$TARGET_DIR/index.md"
 
 # Replace links in index.md
-if [ "$DOCUMENT_TYPE" != "pathway" ] && [ "$EXTERNAL_CONTENT" = false ];
+if [ "$CONTENT_TYPE" != "pathway" ] && [ "$EXTERNAL_CONTENT" = false ];
 then
-    INTRODUCTION_LINK="${TARGET_DIR#docs/en/}/introduction.md"
+    INTRODUCTION_LINK="/${TARGET_DIR#docs/en/}/introduction.md"
     ESCAPED_INTRODUCTION_LINK=$(printf '%s\n' "$INTRODUCTION_LINK" | sed 's/[\/&]/\\&/g')
     sed_inplace "s/{{ INTRODUCTION_LINK }}/$ESCAPED_INTRODUCTION_LINK/g" "$TARGET_DIR/index.md"
 
-    SCENARIO_LINK="${SECTIONS_DIR#docs/en/}/scenario.md"
+    SCENARIO_LINK="/${SECTIONS_DIR#docs/en/}/scenario.md"
     ESCAPED_SCENARIO_LINK=$(printf '%s\n' "$SCENARIO_LINK" | sed 's/[\/&]/\\&/g')
     sed_inplace "s/{{ SCENARIO_LINK }}/$ESCAPED_SCENARIO_LINK/g" "$TARGET_DIR/index.md"
 
-    SOLUTION_LINK="${SECTIONS_DIR#docs/en/}/solution.md"
+    SOLUTION_LINK="/${SECTIONS_DIR#docs/en/}/solution.md"
     ESCAPED_SOLUTION_LINK=$(printf '%s\n' "$SOLUTION_LINK" | sed 's/[\/&]/\\&/g')
     sed_inplace "s/{{ SOLUTION_LINK }}/$ESCAPED_SOLUTION_LINK/g" "$TARGET_DIR/index.md"
 
-    IMAGE_LINK="${SECTIONS_DIR}/img/ExampleImage.png"
-
-    # Compute relative path from TARGET_DIR (index.md location) to IMAGE_LINK
-    ImageRelativeLink=""
-    if command -v realpath >/dev/null 2>&1; then
-        ImageRelativeLink=$(realpath --relative-to="$TARGET_DIR" "$IMAGE_LINK" 2>/dev/null)
-    else
-        echo "realpath command not found, please install coreutils package."
-        exit 1
-    fi
-
-    ESCAPED_IMAGE_LINK=$(printf '%s\n' "$ImageRelativeLink" | sed 's/[\/&]/\\&/g')
+    IMAGE_LINK="/${SECTIONS_DIR#docs/en/}/img/ExampleImage.png"
+    ESCAPED_IMAGE_LINK=$(printf '%s\n' "$IMAGE_LINK" | sed 's/[\/&]/\\&/g')
     sed_inplace "s/{{ IMAGE_LINK }}/$ESCAPED_IMAGE_LINK/g" "$SECTIONS_DIR/scenario.md"
 fi
 
 # Print success message
-if [ "$DOCUMENT_TYPE" == "pathway" ] || [ "$EXTERNAL_CONTENT" = true ];
+if [ "$CONTENT_TYPE" == "pathway" ] || [ "$EXTERNAL_CONTENT" = true ];
 then
     echo "Finished creating new document structure."
     echo "Document Directory: $TARGET_DIR"
-    echo "Please add your title and links to the index.md file in the document directory."
+    echo "Please add your links to the index.md file in the document directory."
     echo ""
     echo "Next steps:"
     echo "1. Preview the site locally, run ./preview-site.sh"
@@ -315,7 +321,6 @@ else
     echo "Finished creating new document structure."
     echo "Document Directory: $TARGET_DIR"
     echo "Sections Directory: $SECTIONS_DIR"
-    echo "Please add your title to the index.md file in the document directory."
     echo "Please add your introduction to the introduction.md file in the document directory."
     echo "Please add your content to the section files in the sections directory."
     echo ""

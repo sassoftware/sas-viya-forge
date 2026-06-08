@@ -6,14 +6,10 @@ Using the following guidelines, you are able to contribute to the assets on this
 This site is built using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/). This means that all pages are creating from plain text markdown documents.
 These documents are stored in a Git repository. The source code of this page can be found on [Github](https://github.com/sassoftware/sas-viya-forge) or using the Github link in the banner of this site.
 
-To ensure consistency, each document type comes with its own predefined layout which contributors need to follow when adding content. We provide an easy script to create the required files for your contribution. See the instructions below.
-
-## Instructions
-
 Contributing to content can most easily be done in the following way:
 
 1. **Fork the Github source.** See [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) for instructions or use this direct [link](https://github.com/sassoftware/sas-viya-forge/fork). Note that you will need to define the Owner of the forked the repository. If you already have a fork of the repository, make sure it is [up-to-date](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with the upstream repository.
-2. [**Clone the repository**](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to create a local copy on your machine. 
+2. [**Clone your forked repository**](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to create a local copy on your machine. 
 3. **Create a new branch.** Using the git command-line tool:
 ```
 git checkout -b <name of your branch>
@@ -35,7 +31,11 @@ or, if you run on Windows:
 ```
 .\preview-site.ps1
 ```
-5. **Stage the files to be committed:**
+6. **Run the spell checker** Also see the section "Spell checking"
+```
+vale --config .vale/.vale.ini docs/en
+```
+7. **Stage the files to be committed:**
 ```
 git add .
 ```
@@ -43,15 +43,15 @@ Alternatively if you want to selectively add modified files you can also run
 ```
 git add <file-or-directory>
 ```
-6. **Commit your changes to the branch**
+8. **Commit your changes to the branch**
 ```
 git commit -m "Add a descriptive message here"
 ```
-7. **Push your changes to your Github repository**
+9. **Push your changes to your Github repository**
 ```
 git push origin <name of your branch>
 ```
-7. **Open a merge request.** 
+10. **Open a merge request.** 
 
 When you initially push your new branch to your repository, Github will provide you with a useful link to directly open a merge request:
 ```
@@ -73,16 +73,18 @@ The warning message stating your changes cannot be merged is expected and will a
 
 The generate-new-document.sh script creates all the necessary template files needed for a new contribution. It accepts various arguments, based on the type of content you want to contribute.
 
+On Linux / macOS:
 ```
 Usage: ./generate-new-document.sh <options>
 Generates a new document directory with the specified name and type.
 Options:
   -n, --name          Specify the document filename (mandatory)
-  -t, --type          Specify the document type (mandatory).
+  -t, --title         Specify the document title (mandatory)
+  -c, --content-type  Specify the content type (mandatory)
                       Valid values are best-practice, guide, reference-architecture, pathway
-  -g, --guide-type    Specify the guide type (mandatory if document type is 'guide').
+  -g, --guide-type    Specify the guide type (mandatory if document type is 'guide')
                       Valid values are decision, implementation, deployment, operating
-  -d, --day           Specify the day in the lifecycle (mandatory if document type is 'best-practice').
+  -d, --day           Specify the day in the lifecycle (mandatory if document type is 'best-practice')
                       Valid values are 0, 1, 2
   -p, --platform      Specify the platform (optional)
                       Valid values are AWS, Azure, GCP, OpenShift
@@ -94,11 +96,34 @@ Options:
   -h, --help          Display this help message
 ```
 
+On Windows:
+```
+Usage: generate-new-document.ps1 -Options
+Generates a new document directory with the specified name and type.
+Parameters:
+  -Name                Specify the document filename (mandatory)
+  -Title               Specify the document title (mandatory)
+  -Type                Specify the document type (mandatory)
+                       Valid values are best-practice, guide, reference-architecture, pathway
+  -GuideType           Specify the guide type (mandatory if document type is 'guide')
+                       Valid values are decision, implementation, deployment, operating
+  -Day                 Specify the day in the lifecycle (mandatory if document type is 'best-practice')
+                       Valid values are 0, 1, 2
+  -Platform            Specify the platform (optional)
+                       Valid values are AWS, Azure, CNCF, GCP, OpenShift
+  -ValidFrom           Specify the valid from version (mandatory)
+  -ValidTo             Specify the valid to version (optional)
+  -Subject             Specify the subject (optional)
+                       Valid values are Security, Reliability, Cost, Performance & Scale, Efficiency
+  -ExternalContent     Specify if the document links to external content (optional)
+  -Help                Display this help message
+```
+
 - The name of the document should a short name that can be used as folder and filenames. For example, for a document on High Availability deployment on AKS, the name could be ha-azure.
-    - The title of the document can be provided within the generated templates.
-- The type, guide-type and day options are explained in the next section "Content Types"
-- The valid-from and valid-to options are explained in the section "Versioning"
-- The external option is explained in the section "External Content"
+- The content-type, guide-type and day options are explained in the next section "Content Types".
+- The platform refers to a specific platform for which the content is applicable. Use CNCF for any of the [CNCF certified Kubernetes distributions](https://www.cncf.io/training/certification/software-conformance/) that are not AWS, Azure, GCP or OpenShift.
+- The valid-from and valid-to options are explained in the section "Versioning".
+- The external option is explained in the section "External Content".
 
 ## Content Types
 
@@ -247,6 +272,19 @@ Now, you can run the preview-site.sh script, which will install the necessary de
 ```
 
 To stop the preview, simply hit CTRL+C.
+
+## Spell Checking
+
+An automatic spell checker will be run on any contribution. This spell checker is run using [vale](https://vale.sh/).
+Vale can be installed by following the instructions found [here](https://docs.vale.sh/topics/installation).
+
+Once installed, you can run the spell checker using the project specific configuration using the following command:
+
+```
+vale --config .vale/.vale.ini docs/en
+```
+
+Please correct any spelling mistakes before submitting your contribution. If words are unknown to Vale, you can add them to the project dictionary: .vale/styles/config/vocabularies/SAS/accept.txt
 
 ## Contributor License Agreement
 Contributions to this project must be accompanied by a signed [Contributor Agreement](ContributorAgreement.txt).

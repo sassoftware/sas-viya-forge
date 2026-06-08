@@ -7,4 +7,4 @@ The custom application will be mapped to an Entra ID service principal. In the e
 
 The figure below illustrates the high-level steps that need to be performed in order to run a SAS compute session using a Managed Identity.
 
-![Steps](../../../../sections/generic/implementation-guides/oauth/20260212/img/JobExecutionOAuth.png)
+![Steps](/sections/generic/implementation-guides/oauth/20260212/img/JobExecutionOAuth.png)

@@ -12,4 +12,4 @@ tags:
 This document is currently in development.
 
 
-Want to contribute? Please see our [Contributing](../../../../contributing.md) page.
+Want to contribute? Please see our [Contributing](/contributing.md) page.
