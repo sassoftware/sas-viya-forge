@@ -68,9 +68,14 @@
   --md-primary-fg-color:               var(--color-container-background); /* Controls the header bar color */
   --md-default-fg-color--lightest:     var(--color-accent-background);  /* Controls the color of the tag boxes */
   --md-default-bg-color:               var(--color-container-background); /* Controls the main background color */
-  
+
+  --md-footer-bg-color:                var(--color-container-background-0);
+  --md-footer-bg-color--dark:          var(--color-container-background);
+  --md-footer-fg-color:                var(--color-body-text);
+  --md-footer-fg-color--light:         var(--color-body-text);
+
   --md-code-bg-color:                  var(--color-container-background-0);
-  --md-code-fg-color:                  var(--color-body-text)
+  --md-code-fg-color:                  var(--color-body-text);
 
   --md-typeset-h1-color:                var(--color-primary);
   --md-typeset-color:                   var(--color-body-text);
@@ -157,6 +162,62 @@
   .md-source__icon svg {
     margin-top: 0px;
     margin-left: 0px !important;
+  }
+
+  .md-footer {
+    background-color: var(--md-primary-fg-color);
+  }
+
+  .md-footer-meta__inner {
+    background-color: var(--color-container-background-0);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08), 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+
+    display: flex;
+    align-items: center;
+    height: 44.79px;
+    min-height: 44.79px;
+    box-sizing: border-box;
+    padding-right: var(--space-base-xl);
+    padding-left: var(--space-base-xl);
+  }
+
+  .md-copyright {
+    color: var(--color-body-text);
+  }
+
+  .md-social {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    gap: 0.75rem;
+    padding: 0px;
+    margin: 0px;
+    white-space: nowrap;
+    min-width: max-content;
+  }
+
+  .md-social__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    line-height: 1;
+    min-width: max-content;
+  }
+
+  .md-social__link svg,
+  .md-social__link i,
+  .md-social__link .md-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-icon-m);
+    height: var(--size-icon-m);
+  }
+
+  .md-social__text {
+    white-space: nowrap;
+    min-width: max-content;
   }
 
     /* Right side */
