@@ -1,0 +1,1 @@
+SAS releases updates to SAS Viya on a continuous basis. This guide is aimed at providing guidance on what types of updates are available and in which situation you need to update your Viya environment.
