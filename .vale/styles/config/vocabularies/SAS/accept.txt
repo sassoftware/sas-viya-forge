@@ -26,6 +26,7 @@ Kubernetes
 autoscaler
 namespace
 namespaces
+kubeconfig
 kustomize
 
 # AWS
@@ -47,6 +48,9 @@ user_impersonation
 # GCP
 Filestore
 
+# CNCF
+OVHcloud
+
 # Networking
 CIDR
 CIDRs
@@ -60,6 +64,10 @@ PostgreSQL
 API
 APIs
 command-line
+CVE
+CVEs
+datacenter
+datacenters
 HTTP
 runtime
 runtimes
