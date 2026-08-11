@@ -28,6 +28,7 @@ namespace
 namespaces
 kubeconfig
 kustomize
+OOMKilled
 
 # AWS
 fsType
@@ -63,6 +64,8 @@ PostgreSQL
 # Generic IT Terms
 API
 APIs
+cgroup
+cgroups
 command-line
 CVE
 CVEs
@@ -73,6 +76,7 @@ runtime
 runtimes
 run-time
 failover
+NVMe
 parallelization
 SSD
 SSDs
@@ -106,11 +110,15 @@ rwx_filestore_endpoint
 
 # Abbreviations
 img
+OOM
+OOMs
 
 # Miscellaneous
 Citrix
 crowdsourced
 Ergon
 misconfigurations
+overcommit
 performant
 tunables
+unbuffered
