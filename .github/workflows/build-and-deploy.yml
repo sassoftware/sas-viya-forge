@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: 3.13      
-          cache: 'pip' # caching pip dependencies
+          cache: 'pip'
       - run: pip install mkdocs-material 
       - run: pip install --user -r requirements.txt
       - run: mkdir -p config/en
