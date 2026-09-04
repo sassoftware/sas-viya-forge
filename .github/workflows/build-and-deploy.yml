@@ -16,40 +16,39 @@ permissions:
   
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: 3.13      
-          cache: 'pip' # caching pip dependencies
+          cache: 'pip'
       - run: pip install mkdocs-material 
       - run: pip install --user -r requirements.txt
       - run: mkdir -p config/en
       - run: cp template/mkdocs.template config/en/mkdocs.yml
       - run: sed -i -e 's/LANG/en/g' config/en/mkdocs.yml
       - run: bash template/generate-nav-tree.sh docs/en config/en/mkdocs.yml
-      - run: export NO_MKDOCS_2_WARNING=1
-      - run: mkdocs build -f config/en/mkdocs.yml
+      - run: NO_MKDOCS_2_WARNING=1 mkdocs build -f config/en/mkdocs.yml
       - run: cp docs/index.html site/
       - name: Upload site artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: site
           path: site/
 
   spellcheck:
     needs: build
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Download site artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: site
           path: site/
       - name: Run Vale spellcheck
-        uses: vale-cli/vale-action@v2
+        uses: vale-cli/vale-action@v3
         with:
           files: docs/en
           reporter: github-pr-review
@@ -60,11 +59,11 @@ jobs:
     needs: 
       - build
       - spellcheck
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
       - name: Download site artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: site
           path: site/
