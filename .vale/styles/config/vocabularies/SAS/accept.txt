@@ -108,6 +108,15 @@ aws_fsx_ontap_storage_virtual_machine
 multi_az
 rwx_filestore_endpoint
 
+# Quantum
+microfabricate
+microfabricated
+microfabrication
+nonlocal
+photonics
+qubit
+qubits
+
 # Abbreviations
 img
 OOM

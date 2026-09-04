@@ -51,6 +51,8 @@ extra_css:
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js
+  - js/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js  
   - js/appinsights.js
   
 markdown_extensions:
@@ -70,6 +72,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
