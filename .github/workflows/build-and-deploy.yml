@@ -29,6 +29,7 @@ jobs:
       - run: cp template/mkdocs.template config/en/mkdocs.yml
       - run: sed -i -e 's/LANG/en/g' config/en/mkdocs.yml
       - run: bash template/generate-nav-tree.sh docs/en config/en/mkdocs.yml
+      - run: export NO_MKDOCS_2_WARNING=1
       - run: mkdocs build -f config/en/mkdocs.yml
       - run: cp docs/index.html site/
       - name: Upload site artifact

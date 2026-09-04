@@ -32,6 +32,9 @@ cp template/mkdocs.template config/en/mkdocs.yml
 sed -i -e 's/LANG/en/g' config/en/mkdocs.yml
 bash template/generate-nav-tree.sh docs/en config/en/mkdocs.yml
 
+# Set the NO_MKDOCS_2_WARNING environment variable
+export NO_MKDOCS_2_WARNING=1
+
 # Serve the site locally
 echo "Starting local preview server at http://localhost:8000"
 echo "Press Ctrl+C to stop the server."
