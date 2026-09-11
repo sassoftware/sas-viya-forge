@@ -24,6 +24,7 @@ Kubernetes
 
 # Kubernetes
 autoscaler
+autoscaling
 namespace
 namespaces
 kubeconfig
@@ -93,6 +94,8 @@ UID
 UIDs
 GID
 GIDs
+VM
+VMs
 
 # Authentication & Authorization
 client_id
@@ -145,6 +148,9 @@ img
 OOM
 OOMs
 
+# Commandline Tools
+sed
+
 # Miscellaneous
 Caltech
 Citrix
@@ -158,6 +164,7 @@ overprovision
 overprovisioned
 overprovisioning
 performant
+reactively
 tunables
 unbuffered
 underperform
