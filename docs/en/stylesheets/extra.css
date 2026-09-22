@@ -491,6 +491,16 @@
   width: 100%;
 }
 
+.md-typeset .checklist table:not([class]) {
+  table-layout: auto;
+}
+
+.md-typeset .checklist th:first-child,
+.md-typeset .checklist td:first-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
 .md-typeset table:not([class]) td, th {
   vertical-align: middle;
   border-right: 1px solid var(--color-container-border-4);

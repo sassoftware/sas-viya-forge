@@ -1,0 +1,11 @@
+## Introduction
+
+This Day 0 Decision Guide helps administrators and architects evaluate and tune NFS-backed storage options for SAS Viya compute workloads running on Kubernetes. Rather than prescribing a specific storage platform, cloud provider, or deployment approach, it identifies the architectural decisions that most influence performance, scalability, availability, and operational fit. The goal is to help practitioners understand how to decide, not simply what to deploy.
+
+The guidance in this document is intentionally platform-agnostic and focuses on the storage decision framework itself. Cloud-managed NFS services are used as representative examples because they provide widely available reference architectures and clearly illustrate common design tradeoffs. Future publications will provide platform-specific implementation guidance through separate layered guides that build on the decision framework presented here. The next layer will focus on cloud vendor-managed NFS services and on-premises enterprise NFS platforms, while subsequent guides will provide implementation guidance for specific Kubernetes and SAS Viya supported platforms.
+
+
+The central design principle is that SAS Viya I/O performance depends on the entire data path, not just the storage service. Administrators should evaluate the solution as an integrated system that includes worker-node capability and placement, storage performance and durability characteristics, NFS client behavior, CSI driver implementation, networking, and security controls. Even when a storage service appears suitable based on published specifications, misaligned client resources, mount options, network topology, or provisioned performance limits can significantly affect workload performance.
+
+This guide focuses on shared file-storage decisions for SAS Viya deployments that use NFS-backed Kubernetes volumes. It is most relevant for workloads that require ReadWriteMany (RWX) semantics, centralized data access, shared libraries, common reference data, and processing patterns that span multiple pods. It does not specifically address temporary scratch-storage scenarios where local ephemeral or block-backed storage can satisfy performance requirements without shared-file semantics.
+
