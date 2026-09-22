@@ -80,13 +80,13 @@ The OpenRC file - which is a shell script that sets environment variables in ord
 
 5.3. After the user has been created, you will see a banner with the following message:
 
-> User user-xxxxxxxxxx has been added with the password xxxxxxxxxx.
+> User user-x has been added with the password x.
 
 Make sure to save this password in a secure place as we will need it later.
 
 5.4. Locate the user you had just created in the users list and go to user setting by clicking on the three dots. 
 
-Now you just need to download the OpenStack RC's file and save it in the location of your Terraform workspace.
+Now you just need to download the OpenStack's RC file and save it in the location of your Terraform workspace.
 
 ![alt text](/sections/platform-specific/cncf/deployment-guides/ovh-deployment/20260603/img/image-2.png)
 

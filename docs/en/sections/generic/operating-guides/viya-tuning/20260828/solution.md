@@ -144,7 +144,7 @@ performance - incoming requests are load balanced across multiple instances of e
 contention and improving response times. For more information on configuring high availability, refer to the [SAS Administration Guide](https://go.documentation.sas.com/doc/en/sasadmincdc/default/dplyml0phy0dkr/n08u2yg8tdkb4jn18u8zsi6yfv3d.htm#n14iqy05lb736yn1e01m2hmzu1xr).
 
 #### If Issues Persist
-If problems remain after applying the tuning baseline and HA settings, review the [SAS Administration Tuning Guide](https://go.documentation.sas.com/doc/en/sasadmincdc/default/caltuning/titlepage.htm) to ensure other  areas are covered. Further increases to pod memory or CPU limits may also be considered, but should be done carefully to avoid causing any unexepcted issues. Focus increases on services that are showing sustained high utilization, frequent restarts, or OOMKilled termination events.
+If problems remain after applying the tuning baseline and HA settings, review the [SAS Administration Tuning Guide](https://go.documentation.sas.com/doc/en/sasadmincdc/default/caltuning/titlepage.htm) to ensure other  areas are covered. Further increases to pod memory or CPU limits may also be considered, but should be done carefully to avoid causing any unexpected issues. Focus increases on services that are showing sustained high utilization, frequent restarts, or OOMKilled termination events.
 
 ### Summary
 Understanding platform behavior is an essential responsibility for every SAS Viya administrator. By monitoring

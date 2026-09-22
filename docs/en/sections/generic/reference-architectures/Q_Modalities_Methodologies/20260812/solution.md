@@ -34,7 +34,7 @@ The approach is attractive because the devices are physically small and may bene
 
 Trapped-ion quantum computers use charged atoms confined by electromagnetic fields. Quantum information is stored in selected electronic or hyperfine states. Lasers prepare, manipulate, entangle, and measure the ions. In segmented trap architectures, changing DC electrode voltages can transport ions between storage, gate, and measurement zones.
 
-Because ions of the same species are naturally identical, trapped-ion systems can achieve uniform qubits and high-quality operations. Collective vibrational motion or other imgted interactions can provide effective connectivity among ions. Scaling requires careful engineering of transport, optical delivery, control electronics, and error management.
+Because ions of the same species are naturally identical, trapped-ion systems can achieve uniform qubits and high-quality operations. Collective vibrational motion or other mitigated interactions can provide effective connectivity among ions. Scaling requires careful engineering of transport, optical delivery, control electronics, and error management.
 
 - **Strengths:** Uniform qubits, high-fidelity operations, long coherence, and strong effective connectivity.
 - **Challenges:** Slower operations than some solid-state platforms, complex optical systems, and scaling control across many ions.

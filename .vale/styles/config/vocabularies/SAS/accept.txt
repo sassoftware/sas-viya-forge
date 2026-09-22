@@ -128,20 +128,32 @@ rsize
 wsize
 
 # Quantum
+annealers
+detuning
+detunings
 Fizika
 Hadamard
+homodyne
+Ising
 microfabricate
 microfabricated
 microfabrication
+nonclassical
+nonclassically
 nonfactorability
 nonlocal
+nonlocally
 photonics
 Podolsky
 qubit
 qubits
 Rosen
+spacetime
 statevector
 statevectors
+transmon
+worldline
+worldlines
 
 # Abbreviations
 img
@@ -158,6 +170,7 @@ colocated
 colocation
 crowdsourced
 Ergon
+millikelvin
 misconfigurations
 overcommit
 overprovision
