@@ -52,6 +52,9 @@ Set-Content -Path "config/en/mkdocs.yml" -Value $Content
 Write-Host "Generating navigation tree..."
 .\template\generate-nav-tree.ps1 docs/en config/en/mkdocs.yml
 
+# Set the NO_MKDOCS_2_WARNING environment variable
+$env:NO_MKDOCS_2_WARNING = "1"
+
 # Serve the site locally
 Write-Host "Starting local preview server at http://localhost:8000"
 Write-Host "Press Ctrl+C to stop the server."

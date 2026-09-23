@@ -42,7 +42,7 @@ function Process-Sections {
     
     foreach ($match in $matches) {
         $sectionTitle = $match.Groups[1].Value
-        $sectionLink = $match.Groups[2].Value
+        $sectionLink = $match.Groups[2].Value.TrimStart('/')
         Add-Content -Path $OutputFile -Value "$newIndent- `"$sectionTitle`": $sectionLink"
     }
 }
@@ -97,12 +97,26 @@ function Generate-NavTree {
     $cwd = (Get-Location).ProviderPath
     $cwdWithSep = $cwd.TrimEnd('\') + '\'
     
+    # Build sort metadata from .title files, falling back to directory names.
+    # Keep 0-intro first, then sort case-insensitively by title and name.
     $entries = @(Get-ChildItem -Path $Dir -Directory -ErrorAction SilentlyContinue |
                     ForEach-Object {
                     $relative = $_.FullName -replace [regex]::Escape($cwdWithSep), ""
+                    $title = $_.Name
+                    $titleFile = Join-Path $_.FullName ".title"
+                    if (Test-Path $titleFile) {
+                        $title = Read-TitleFile $titleFile
+                    }
+                    $sortPriority = if ($_.Name -eq "0-intro") { 0 } else { 1 }
                     # keep .FullName and .Name so the rest of the script continues to work
-                    [PSCustomObject]@{ FullName = $relative; Name = $_.Name }
-                    }) 
+                    [PSCustomObject]@{
+                        FullName = $relative
+                        Name = $_.Name
+                        Title = $title
+                        SortPriority = $sortPriority
+                    }
+                    } |
+                    Sort-Object -Property SortPriority, Title, Name)
     
     foreach ($entry in $entries) {
         $folderName = Split-Path -Leaf $entry.FullName

@@ -79,10 +79,10 @@ generate_nav_tree() {
     local output_file="$3"
     local root_dir="$4"
 
-    for entry in "$dir"/*; do
+    # Read the sorted records produced below: priority, display title, and path.
+    while IFS=$'\t' read -r sort_priority title entry; do
         if [ -d "$entry" ]; then
             local folder_name
-            local title
             local version_folder
 
             folder_name=$(basename "$entry")
@@ -142,7 +142,26 @@ generate_nav_tree() {
             echo "${indent}- ${title}:" >> "$output_file"
             generate_nav_tree "$entry" "  $indent" "$output_file" "$root_dir"
         fi
-    done
+    done < <(
+        # Build tab-separated sort records so directory names are ordered by
+        # their .title value, with the directory path as a stable tie-breaker.
+        for entry in "$dir"/*; do
+            [ -d "$entry" ] || continue
+
+            folder_name=$(basename "$entry")
+            title=$folder_name
+            if [ -f "$entry/.title" ]; then
+                title=$(read_title_file "$entry/.title")
+            fi
+
+            sort_priority=1
+            [ "$folder_name" = "0-intro" ] && sort_priority=0
+            printf '%s\t%s\t%s\n' "$sort_priority" "$title" "$entry"
+        done |
+            # Sort by priority, then title, then path. Case-insensitive C
+            # locale sorting keeps the generated navigation deterministic.
+            LC_ALL=C sort -f -t $'\t' -k1,1n -k2,2 -k3,3
+    )
 }
 
 # Main script
