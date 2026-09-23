@@ -80,6 +80,7 @@ run-time
 failover
 NVMe
 parallelization
+postprocessing
 provisionable
 SSD
 SSDs
@@ -120,13 +121,20 @@ rsize
 wsize
 
 # Quantum
+Fizika
+Hadamard
 microfabricate
 microfabricated
 microfabrication
+nonfactorability
 nonlocal
 photonics
+Podolsky
 qubit
 qubits
+Rosen
+statevector
+statevectors
 
 # Abbreviations
 img
@@ -134,6 +142,7 @@ OOM
 OOMs
 
 # Miscellaneous
+Caltech
 Citrix
 colocated
 colocation

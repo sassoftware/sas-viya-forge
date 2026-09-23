@@ -12,5 +12,14 @@ window.MathJax = {
 };
 
 document$.subscribe(() => {
-  MathJax.typesetPromise();
+  document.querySelectorAll(".md-sidebar--secondary .md-ellipsis").forEach((element) => {
+    element.classList.add("arithmatex");
+  });
+
+  const elements = [
+    document.querySelector(".md-content"),
+    document.querySelector(".md-sidebar--secondary")
+  ].filter((element) => element);
+
+  MathJax.typesetPromise(elements);
 });

@@ -5,7 +5,7 @@
 ## Objective
 SAS is advancing a quantum computing initiative to bring quantum capabilities to SAS Viya. The goal is to make quantum computing more intuitive, efficient, and cost-effective, reducing the barriers to adoption and accelerating the path from experimentation to business value. This document provides a high-level introduction to the major quantum computing modalities and computational models.
 
-## 1. Introduction
+## Introduction
 
 Quantum computing is not based on a single hardware architecture. Different systems encode and manipulate quantum information using atoms, ions, photons, electron or nuclear spins, superconducting circuits, or proposed topological states. These physical implementations are often called **qubit modalities**.
 
@@ -18,7 +18,7 @@ No modality or model is best for every application. Each involves trade-offs amo
     **Computational model** describes how a computation is expressed and executed.  
     **Architecture** describes how qubits, controls, couplers, measurement, and supporting systems are organized within a particular implementation.
 
-### 1.1 How to read this guide
+### How to read this guide
 
 1. Section 2 compares the principal physical qubit modalities.
 2. Section 3 explains the major computational models.

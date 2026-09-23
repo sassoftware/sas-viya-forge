@@ -1,10 +1,10 @@
 ## Quantum Modalities & Computation Models
 
-## 2. Physical Qubit Modalities
+## Physical Qubit Modalities
 
 A qubit is a controllable two-level quantum system used to encode a computational basis. The labels 0 and 1 refer to two selected quantum states, not necessarily to literal particles pointing in fixed directions. A useful modality must support reliable initialization, control, interaction, and measurement while preserving quantum information long enough to perform meaningful operations.
 
-### 2.1 Neutral atoms
+### Neutral atoms
 
 Neutral-atom quantum computers commonly use atoms such as rubidium or strontium. Focused laser beams called optical tweezers trap individual atoms and arrange them into programmable geometries. Quantum information is encoded in selected internal atomic states chosen for stability, controllability, and readout.
 
@@ -17,7 +17,7 @@ For entangling operations, atoms can be excited to high-energy [Rydberg states](
 
 *Figure 1. Neutral-atom experimental system.*
 
-### 2.2 Semiconductor spin qubits
+### Semiconductor spin qubits
 
 Semiconductor spin qubits confine electrons or holes in small regions of semiconductor material, often called quantum dots. Two selected spin states encode the computational basis. Microwave, magnetic, and electric controls manipulate the states, while nearby gates and sensors support confinement and readout.
 
@@ -30,7 +30,7 @@ The approach is attractive because the devices are physically small and may bene
 
 *Figure 2. Conceptual control of localized semiconductor spin qubits.*
 
-### 2.3 Trapped ions
+### Trapped ions
 
 Trapped-ion quantum computers use charged atoms confined by electromagnetic fields. Quantum information is stored in selected electronic or hyperfine states. Lasers prepare, manipulate, entangle, and measure the ions. In segmented trap architectures, changing DC electrode voltages can transport ions between storage, gate, and measurement zones.
 
@@ -43,7 +43,7 @@ Because ions of the same species are naturally identical, trapped-ion systems ca
 
 *Figure 3. Microfabricated trapped-ion structure.*
 
-### 2.4 Nitrogen-vacancy centers in diamond
+### Nitrogen-vacancy centers in diamond
 
 A nitrogen-vacancy center is a defect in diamond formed by a nitrogen atom adjacent to a missing carbon atom. The defect supports electronic spin states that can encode quantum information. Nearby nuclear spins may provide additional qubits or longer-lived quantum memory.
 
@@ -56,7 +56,7 @@ Optical signals support initialization and readout, while microwave fields contr
 
 *Figure 4. Electron and nuclear spins associated with a diamond defect.*
 
-### 2.5 Photonics
+### Photonics
 
 Photonic quantum computers use photons or optical modes to carry quantum information. Depending on the architecture, information may be encoded in optical path, polarization, time bins, frequency bins, photon number, or continuous-variable optical quadratures. This diversity is important: no single source-interferometer-detector description covers every photonic system.
 
@@ -69,7 +69,7 @@ In a continuous-variable architecture, squeezed-light sources prepare nonclassic
 
 *Figure 5. Example photonic pipeline with sources, interferometer, and detection.*
 
-### 2.6 Superconducting circuits
+### Superconducting circuits
 
 Superconducting quantum processors use nonlinear electrical circuits operated at millikelvin temperatures. A Josephson junction provides the nonlinearity required to create discrete, addressable energy levels. Two selected levels form the computational basis, and microwave or flux-control signals implement operations and readout.
 
@@ -84,7 +84,7 @@ Superconducting technology supports both gate-based processors and quantum annea
 
 *Figure 6. Packaged superconducting quantum processor.*
 
-### 2.7 Topological approaches
+### Topological approaches
 
 Topological quantum computing seeks to encode information nonlocally in collective quantum states. In the most familiar proposal, logical operations would be performed by exchanging, or braiding, non-Abelian excitations. Their trajectories through two spatial dimensions over time form braids in 2+1-dimensional spacetime.
 
@@ -97,11 +97,11 @@ Because the information would be represented in global properties of the system,
 
 *Figure 7. Conceptual worldlines that form a braid.*
 
-## 3. Computational Models
+## Computational Models
 
 A computational model defines how a user expresses a problem and how the physical system evolves to produce a result. The terms gate-based, analog, and annealing describe models of computation, not physical qubit modalities. The same modality may support multiple models, and similar models may be implemented with different modalities.
 
-### 3.1 Gate-based quantum computing
+### Gate-based quantum computing
 
 Gate-based quantum computing represents a program as a circuit composed of quantum operations applied to qubits. Single-qubit gates change individual states, multi-qubit gates create correlations and entanglement, and measurement converts selected quantum information into classical outcomes. Compilers translate the logical circuit into operations supported by the target hardware.
 
@@ -116,7 +116,7 @@ As circuits become deeper, accumulated control errors, measurement errors, cross
 
 *Figure 8. Quantum circuit with single-qubit and entangling operations.*
 
-### 3.2 Analog quantum computing and simulation
+### Analog quantum computing and simulation
 
 Analog quantum computing programs the continuous evolution of a quantum system so that its Hamiltonian represents or approximates a physical system or computational problem. Instead of decomposing the entire computation into a standard sequence of discrete gates, the user controls interactions, fields, detunings, or other physical parameters over time.
 
@@ -125,7 +125,7 @@ Analog systems can use hardware efficiently when a problem aligns with the platf
 - **Good fit:** Simulation of quantum dynamics, many-body physics, and selected optimization problems.
 - **Key consideration:** Performance depends strongly on how naturally the target Hamiltonian maps onto the available hardware.
 
-### 3.3 Quantum annealing
+### Quantum annealing
 
 Quantum annealing is a specialized analog approach used primarily for optimization and sampling problems that can be expressed as an Ising model or a quadratic unconstrained binary optimization model. The process begins with a driver Hamiltonian whose low-energy state is easy to prepare and gradually replaces it with a problem Hamiltonian whose low-energy states encode high-quality solutions.
 
@@ -145,13 +145,13 @@ The returned samples are candidate solutions, not automatic guarantees of global
 
 *Figure 9. Example of quantum annealing process*
 
-### 3.4 Hybrid analog-digital approaches
+### Hybrid analog-digital approaches
 
 The boundary between computational models is not always sharp. A system may use analog blocks inside a gate-based workflow, digital controls around analog evolution, or classical optimization around repeated quantum executions. Hybrid designs can exploit hardware-native operations while retaining higher-level programmability.
 
 For users, the practical question is not whether a platform is purely digital or purely analog. The more useful questions are what problem representations it supports, how much control it exposes, which operations are native, and what classical processing is required before and after quantum execution.
 
-## 4. Relating Modality to Computational Model
+## Relating Modality to Computational Model
 
 Modality and model should be evaluated together. A physically attractive qubit is not automatically the best platform for a particular algorithm, and a compelling computational model is not automatically efficient on every implementation.
 
@@ -168,18 +168,18 @@ Modality and model should be evaluated together. A physically attractive qubit i
 !!! note "Important"  
     This table describes broad associations, not rigid boundaries. Implementations evolve, and individual providers may support capabilities beyond the dominant model associated with a modality.
 
-## 5. A Better Way to Compare Quantum Systems
+## A Better Way to Compare Quantum Systems
 
 Raw qubit count is easy to communicate but rarely sufficient for technical evaluation. A useful comparison should begin with the workload and then assess the complete system against the requirements of that workload.
 
-### 5.1 Start with the problem
+### Start with the problem
 
 - Is the objective simulation, optimization, sampling, machine learning, cryptanalysis, or another workload?
 - Can the problem be expressed naturally in the platform's supported representation?
 - What solution quality, confidence, latency, throughput, and cost are required?
 - What classical preprocessing and postprocessing are part of the workflow?
 
-### 5.2 Evaluate the hardware in context
+### Evaluate the hardware in context
 
 - **Qubit or mode quality:** Coherence, gate or control fidelity, calibration stability, and measurement quality.
 - **Connectivity:** Which pairs can interact directly, and what routing or embedding overhead is required?
@@ -187,11 +187,11 @@ Raw qubit count is easy to communicate but rarely sufficient for technical evalu
 - **Control and programmability:** Which operations are native, and which must be synthesized or approximated?
 - **Availability and reproducibility:** Access model, queueing, calibration variability, tooling, and repeatability.
 
-### 5.3 Compare complete workflows
+### Compare complete workflows
 
 The relevant benchmark is the full path from problem definition to validated answer. Quantum execution time alone can omit model construction, compilation, embedding, data movement, repeated sampling, error mitigation, and classical postprocessing. Comparisons should use clearly defined baselines and report both solution quality and total resource cost.
 
-## 6. Conclusion
+## Conclusion
 
 Quantum computing comprises multiple physical modalities and computational models. Neutral atoms, trapped ions, semiconductor spins, diamond defects, photons, superconducting circuits, and proposed topological states offer different paths to creating and controlling qubits. Gate-based computing, analog simulation, and quantum annealing provide different ways to express and execute computations.
 
