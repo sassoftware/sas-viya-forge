@@ -28,6 +28,7 @@ namespace
 namespaces
 kubeconfig
 kustomize
+OOMKill
 OOMKilled
 
 # AWS
@@ -79,6 +80,9 @@ runtimes
 run-time
 failover
 NVMe
+onboard
+onboarded
+onboarding
 parallelization
 postprocessing
 provisionable
