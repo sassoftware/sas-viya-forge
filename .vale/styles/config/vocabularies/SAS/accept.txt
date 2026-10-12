@@ -129,15 +129,18 @@ wsize
 
 # Quantum
 annealers
+Deutsch
 detuning
 detunings
 Fizika
 Hadamard
+Michalakis
 homodyne
 Ising
 microfabricate
 microfabricated
 microfabrication
+Niels
 nonclassical
 nonclassically
 nonfactorability
@@ -148,9 +151,13 @@ Podolsky
 qubit
 qubits
 Rosen
+Spyridon
 spacetime
 statevector
 statevectors
+superpositional
+tensored
+tensoring
 transmon
 worldline
 worldlines
