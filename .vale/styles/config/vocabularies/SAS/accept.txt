@@ -129,9 +129,14 @@ wsize
 
 # Quantum
 annealers
+ansatz
 Deutsch
 detuning
 detunings
+eigensolver
+eigensolvers
+eigenstate
+eigenstates
 Fizika
 Hadamard
 Michalakis
@@ -146,6 +151,7 @@ nonclassically
 nonfactorability
 nonlocal
 nonlocally
+n_repeats
 photonics
 Podolsky
 qubit
