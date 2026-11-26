@@ -280,7 +280,8 @@ if [ ! -z "$VALID_TO" ]; then
 fi
 
 sed_inplace "s/{{VALID_FROM}}/$VALID_FROM/g" "$TARGET_DIR/index.md"
-sed_inplace "s/{{ DOCUMENT_TITLE }}/$DOCUMENT_TITLE/g" "$TARGET_DIR/index.md"
+ESCAPED_DOCUMENT_TITLE=$(printf '%s\n' "$DOCUMENT_TITLE" | sed 's/[\/&\\]/\\&/g')
+sed_inplace "s/{{ DOCUMENT_TITLE }}/$ESCAPED_DOCUMENT_TITLE/g" "$TARGET_DIR/index.md"
 
 # Replace links in index.md
 if [ "$CONTENT_TYPE" != "pathway" ] && [ "$EXTERNAL_CONTENT" = false ];
